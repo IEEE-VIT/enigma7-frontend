@@ -20,11 +20,6 @@ const Timer = () => {
                 format="HH:mm:ss:SSS"
                 value={deadline}
                 onFinish={onFinish}
-                valueStyle={{
-                    background: "rgba(24, 47, 36, 0.3)",
-                    color: "#26DF21",
-                    fontSize: "50px",
-                }}
             />
             {!startNow ? (
                 <div> </div>

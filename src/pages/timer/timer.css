@@ -27,6 +27,16 @@
     max-width: 300px;
 }
 
+.ant-statistic-content {
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 49px;
+    background: rgba(24, 47, 36, 0.3);
+    color: #26df21;
+}
+
 .timer-start-now {
     font-family: VT323;
     font-size: 70px;
