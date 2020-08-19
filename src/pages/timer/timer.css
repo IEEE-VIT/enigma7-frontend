@@ -9,6 +9,8 @@
     align-items: center;
     padding: 0 1rem;
     text-align: center;
+    /* align-self: center;
+    justify-self: center; */
 }
 
 .timer-heading {
@@ -48,4 +50,12 @@
 .timer-footer {
     font-size: 20px;
     line-height: 26px;
+}
+
+@media only screen and (max-width: 600px) {
+    .timer-page {
+        height: 90vh;
+        width: 90vw;
+        margin: 1.7rem;
+    }
 }
