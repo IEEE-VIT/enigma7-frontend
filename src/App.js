@@ -1,8 +1,20 @@
 import React from "react";
-import { Typography } from "antd";
+import { Layout } from "antd";
+import Timer from "./pages/timer/timer";
 
 const App = () => {
-    return <Typography.Title className="App">Enigma7</Typography.Title>;
+    return (
+        <Layout
+            style={{
+                background: "inherit",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <Timer />
+        </Layout>
+    );
 };
 
 export default App;

@@ -1,0 +1,39 @@
+.timer-page {
+    background: #080e08;
+    height: 92vh;
+    width: 94vw;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.timer-heading {
+    font-size: 27px;
+    line-height: 35px;
+}
+.ant-statistic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ant-statistic-title {
+    color: #1db818;
+    font-size: 25px;
+    line-height: 32px;
+    text-align: center;
+    max-width: 300px;
+}
+
+.timer-start-now {
+    font-family: VT323;
+    font-size: 70px;
+    line-height: 70px;
+}
+
+.timer-footer {
+    font-size: 20px;
+    line-height: 26px;
+}
