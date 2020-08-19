@@ -1,4 +1,5 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import Timer from "./pages/timer/timer";
 
@@ -12,7 +13,9 @@ const App = () => {
                 alignItems: "center",
             }}
         >
-            <Timer />
+            <Switch>
+                <Route exact path="/" component={Timer} />
+            </Switch>
         </Layout>
     );
 };
