@@ -16,11 +16,7 @@ const Timer = () => {
             <div className="timer-heading">
                 The ultimate cryptic hunt starts in
             </div>
-            <Countdown
-                format="HH:mm:ss:SSS"
-                value={deadline}
-                onFinish={onFinish}
-            />
+            <Countdown value={deadline} onFinish={onFinish} />
             {!startNow ? (
                 <div> </div>
             ) : (
