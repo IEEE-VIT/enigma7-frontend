@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Statistic } from "antd";
 import "./timer.css";
+import { useHistory } from "react-router-dom";
 import useKeyPress from "../../hooks/useKeyPress";
 
 const { Countdown } = Statistic;
 const deadline = Date.now() + 1000 * 10;
 
 const Timer = () => {
+    const history = useHistory();
     const [startNow, setStartNow] = useState(false);
-    console.log(useKeyPress("Enter"));
+    if (useKeyPress("Enter") && startNow) {
+        console.log("done");
+        history.push("/done");
+    }
     const onFinish = () => {
         console.log("finished!");
         setStartNow(true);
@@ -22,9 +27,11 @@ const Timer = () => {
             {!startNow ? (
                 <div> </div>
             ) : (
-                <div className="timer-start-now">START NOW</div>
+                <div>
+                    <div className="timer-start-now">START NOW</div>
+                    <div className="timer-footer">Press ENTER to continue</div>
+                </div>
             )}
-            <div className="timer-footer">Press ENTER to continue</div>
         </div>
     );
 };
