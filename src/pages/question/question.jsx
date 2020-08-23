@@ -30,6 +30,9 @@ const Question = () => {
     const selectPower3 = () => {
         console.log("power3");
     };
+    const onHintClick = () => {
+        console.log("used hint");
+    };
 
     return (
         <Layout className="page">
@@ -75,7 +78,9 @@ const Question = () => {
                         </div>
                     </div>
                     <div className="question-box">picture</div>
-                    <div className="question-hint-btn">[ Use hint ]</div>
+                    <div className="question-hint-btn" onClick={onHintClick}>
+                        [ Use hint ]
+                    </div>
                     <Form
                         {...layout}
                         name="basic"

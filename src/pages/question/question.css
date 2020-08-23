@@ -59,6 +59,10 @@
     margin: 1rem 0;
 }
 
+.question-hint-btn:hover {
+    cursor: pointer;
+}
+
 .question-input {
     background: rgba(24, 47, 36, 0.3);
     border: none;
