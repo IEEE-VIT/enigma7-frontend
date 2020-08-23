@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Statistic } from "antd";
 import "./timer.css";
+import useKeyPress from "../../hooks/useKeyPress";
 
 const { Countdown } = Statistic;
 const deadline = Date.now() + 1000 * 10;
 
 const Timer = () => {
     const [startNow, setStartNow] = useState(false);
+    console.log(useKeyPress("Enter"));
     const onFinish = () => {
         console.log("finished!");
         setStartNow(true);
