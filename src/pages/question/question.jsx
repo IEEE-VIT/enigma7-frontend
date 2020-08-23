@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { Layout, Progress, Form, Input, Button } from "antd";
@@ -18,6 +20,17 @@ const Question = () => {
     const onFinish = (values) => {
         console.log("Answer:", values);
     };
+
+    const selectPower1 = () => {
+        console.log("power1");
+    };
+    const selectPower2 = () => {
+        console.log("power2");
+    };
+    const selectPower3 = () => {
+        console.log("power3");
+    };
+
     return (
         <Layout className="page">
             <NavBar />
@@ -34,9 +47,24 @@ const Question = () => {
                     // trailColor="#080E07"
                 />
                 <div className="question-header">
-                    <div className="question-powerup-box">powerup</div>
-                    <div className="question-powerup-box">powerup</div>
-                    <div className="question-powerup-box">powerup</div>
+                    <div
+                        className="question-powerup-box"
+                        onClick={selectPower1}
+                    >
+                        powerup
+                    </div>
+                    <div
+                        className="question-powerup-box"
+                        onClick={selectPower2}
+                    >
+                        powerup
+                    </div>
+                    <div
+                        className="question-powerup-box"
+                        onClick={selectPower3}
+                    >
+                        powerup
+                    </div>
                 </div>
                 <div className="question-main">
                     <div>
