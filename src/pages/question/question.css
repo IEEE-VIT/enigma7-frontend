@@ -4,6 +4,12 @@
     flex-direction: column;
     align-self: center;
     justify-content: space-evenly;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.question-body::-webkit-scrollbar {
+    display: none;
 }
 
 .question-header {
@@ -94,5 +100,11 @@
     }
     .question-form {
         width: max-content;
+    }
+}
+
+@media only screen and (max-height: 730px) {
+    .question-body {
+        padding: 20rem 0 !important;
     }
 }
