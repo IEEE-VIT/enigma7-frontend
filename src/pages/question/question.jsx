@@ -1,14 +1,13 @@
 import React from "react";
-import { Typography } from "antd";
+import { Layout } from "antd";
 import "./question.css";
+import NavBar from "../../components/navbar/navbar";
 
 const Question = () => {
     return (
-        <div>
-            <Typography.Title>
-                Question page, goto /startnow for timer
-            </Typography.Title>
-        </div>
+        <Layout className="page">
+            <NavBar />
+        </Layout>
     );
 };
 

@@ -13,3 +13,10 @@ body {
 html {
     cursor: url("https://i.ibb.co/LtR9LJr/cursor.png"), auto;
 }
+
+.page {
+    background: #080e08;
+    height: 92vh;
+    width: 94vw;
+    margin: 2rem;
+}

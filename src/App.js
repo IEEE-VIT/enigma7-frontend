@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import Timer from "./pages/timer/timer";
+import Question from "./pages/question/question";
 
 const App = () => {
     return (
@@ -14,7 +15,7 @@ const App = () => {
             }}
         >
             <Switch>
-                <Route exact path="/" component={Timer} />
+                <Route exact path="/" component={Question} />
                 <Route exact path="/startNow" component={Timer} />
             </Switch>
         </Layout>

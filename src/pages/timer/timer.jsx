@@ -12,14 +12,14 @@ const Timer = () => {
     const [startNow, setStartNow] = useState(false);
     if (useKeyPress("Enter") && startNow) {
         console.log("done");
-        history.push("/done");
+        history.push("/");
     }
     const onFinish = () => {
         console.log("finished!");
         setStartNow(true);
     };
     return (
-        <div className="timer-page">
+        <div className="timer-page page">
             <div className="timer-heading">
                 The ultimate cryptic hunt starts in
             </div>

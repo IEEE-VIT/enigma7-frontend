@@ -1,8 +1,4 @@
 .timer-page {
-    background: #080e08;
-    height: 92vh;
-    width: 94vw;
-    margin: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
