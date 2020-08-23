@@ -15,6 +15,7 @@ const App = () => {
         >
             <Switch>
                 <Route exact path="/" component={Timer} />
+                <Route exact path="/startNow" component={Timer} />
             </Switch>
         </Layout>
     );
