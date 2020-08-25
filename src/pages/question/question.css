@@ -93,6 +93,49 @@
     justify-self: center;
 }
 
+/* antd modal modification */
+.ant-modal {
+    background: #080e08;
+    border: 4px solid rgba(24, 47, 36, 0.8);
+    padding-bottom: 0px;
+}
+
+.ant-modal-header {
+    background: rgba(24, 47, 36, 0.8);
+    height: 4rem;
+    border: 0;
+}
+
+.ant-modal-body {
+    background: #080e08;
+    border: 0;
+    color: #eef4e8;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.ant-modal-footer {
+    background: #080e08;
+    border: 0;
+    display: flex;
+    justify-content: center;
+}
+.ant-modal-footer button {
+    background: #080e08;
+    color: #ffffff;
+    border: 2px solid #eef4e8;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+
+    color: #eef4e8;
+}
+
 @media only screen and (max-width: 600px) {
     .question-powerup-box {
         width: 5rem;

@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Progress, Form, Input, Button } from "antd";
 import "./question.css";
+import Modal from "antd/lib/modal/Modal";
 import NavBar from "../../components/navbar/navbar";
 
 const { Content } = Layout;
@@ -17,21 +18,37 @@ const tailLayout = {
 };
 
 const Question = () => {
+    const [modal, showModal] = useState(true);
     const onFinish = (values) => {
         console.log("Answer:", values);
+        showModal(true);
     };
 
     const selectPower1 = () => {
         console.log("power1");
+        showModal(true);
     };
     const selectPower2 = () => {
         console.log("power2");
+        showModal(true);
     };
     const selectPower3 = () => {
         console.log("power3");
+        showModal(true);
     };
     const onHintClick = () => {
         console.log("used hint");
+        showModal(true);
+    };
+
+    const handleOk = (e) => {
+        console.log(e);
+        showModal(false);
+    };
+
+    const handleCancel = (e) => {
+        console.log(e);
+        showModal(false);
     };
 
     return (
@@ -110,6 +127,18 @@ const Question = () => {
                         </Form.Item>
                     </Form>
                 </div>
+                <Modal
+                    visible={modal}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    okText="Yes"
+                    closable={false}
+                    title="    "
+                    autoFocusButton="ok"
+                    okType
+                >
+                    <p>Some contents...</p>
+                </Modal>
             </Content>
         </Layout>
     );
