@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import Timer from "./pages/timer/timer";
 import Question from "./pages/question/question";
+import MainPage from "./pages/main/main";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
             <Switch>
                 <Route exact path="/" component={Question} />
                 <Route exact path="/startNow" component={Timer} />
+                <Route exact path="/main" component={MainPage} />
             </Switch>
         </Layout>
     );
