@@ -2,9 +2,10 @@
     color: #26df21 !important;
     font-family: IBM Plex Mono;
     font-size: 26px;
-    margin-top: 39px;
     padding: 8px 50px;
-    background-color: transparent;
     border-radius: 0;
+}
+
+.button-container:hover {
     border: 2px solid #26df21;
 }

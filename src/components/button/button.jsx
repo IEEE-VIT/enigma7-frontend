@@ -6,7 +6,7 @@ import "./button.css";
 const Buttons = (props) => {
     return (
         <div>
-            <button className="button-container">{props.name}</button>
+            <div className="button-container">{props.name}</div>
             <br />
         </div>
     );
