@@ -98,6 +98,8 @@
     background: #080e08;
     border: 4px solid rgba(24, 47, 36, 0.8);
     padding-bottom: 0px;
+    position: relative;
+    top: 35vh;
 }
 
 .ant-modal-header {

@@ -18,7 +18,7 @@ const tailLayout = {
 };
 
 const Question = () => {
-    const [modal, showModal] = useState(true);
+    const [modal, showModal] = useState(false);
     const onFinish = (values) => {
         console.log("Answer:", values);
         showModal(true);
