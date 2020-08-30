@@ -1,0 +1,56 @@
+.first-login {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+    justify-content: space-between;
+}
+
+.first-login-heading {
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    line-height: 35px;
+}
+
+.first-login-content {
+    margin: 5rem 0;
+}
+
+.first-login-question {
+    text-align: left;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #1db818;
+}
+
+.first-login-input {
+    display: flex;
+    justify-self: left;
+    height: 3rem;
+    max-width: 375px;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 27px;
+    margin: 2rem 0;
+}
+
+.first-login-input:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+.first-login-footer {
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+}

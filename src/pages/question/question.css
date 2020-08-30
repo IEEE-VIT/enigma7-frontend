@@ -73,6 +73,7 @@
     background: rgba(24, 47, 36, 0.3);
     border: none;
     color: #1db818;
+    caret-color: #1db818;
 }
 
 .question-btn {
