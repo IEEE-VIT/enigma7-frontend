@@ -79,9 +79,11 @@
     border: none;
     color: #1db818;
     caret-color: #1db818;
+    height: 2.5rem;
 }
 
 .question-btn {
+    margin: 1rem 0;
     background: 0%;
     color: #26df21;
     border: 1px solid #1db818;
@@ -89,6 +91,14 @@
 }
 
 .question-btn:hover {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
+.question-btn:focus {
     background: rgba(24, 47, 36, 0.6);
     border: 2px solid rgba(38, 223, 33, 0.72);
     box-sizing: border-box;

@@ -21,4 +21,5 @@ html {
     width: 94vw;
     margin: 2rem;
     display: flex;
+    overflow-y: hidden;
 }
