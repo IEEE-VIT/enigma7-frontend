@@ -48,7 +48,7 @@
     line-height: 26px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 670px) {
     .timer-page {
         height: 90vh;
         width: 90vw;
