@@ -17,7 +17,7 @@ const LeaderBoard = () => {
                         <thead>
                             <tr>
                                 <th className="col">Rank</th>
-                                <th className="col">UserName</th>
+                                <th className="username col">UserName</th>
                                 <th className="col">Solved</th>
                                 <th className="col">Score</th>
                             </tr>
@@ -30,7 +30,7 @@ const LeaderBoard = () => {
                                         className="leaderboard-row"
                                     >
                                         <td className="col">{leader.rank}.</td>
-                                        <td className="col">
+                                        <td className="username col">
                                             {leader.username}
                                         </td>
                                         <td className="col">{leader.solved}</td>
