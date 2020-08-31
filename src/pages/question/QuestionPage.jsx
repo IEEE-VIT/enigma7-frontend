@@ -5,7 +5,9 @@ import React, { useState } from "react";
 import { Layout, Progress, Form, Input, Button } from "antd";
 import "./question.css";
 import Modal from "antd/lib/modal/Modal";
+import { useHistory } from "react-router-dom";
 import NavBar from "../../components/navbar/navbar";
+import useKeyPress from "../../hooks/useKeyPress";
 
 const { Content } = Layout;
 
@@ -19,6 +21,10 @@ const tailLayout = {
 
 const Question = () => {
     const [modal, showModal] = useState(false);
+    const history = useHistory();
+    if (useKeyPress("Escape")) {
+        history.push("/main");
+    }
     const onFinish = (values) => {
         console.log("Answer:", values);
         showModal(true);
