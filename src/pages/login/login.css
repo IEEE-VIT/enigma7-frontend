@@ -4,6 +4,8 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .login-header-background {
@@ -16,6 +18,7 @@
     line-height: 16px;
     color: #145e14;
     opacity: 0.25;
+    z-index: -2;
 }
 
 .login-header {
@@ -41,6 +44,7 @@
     color: #1db818;
     letter-spacing: 2rem;
     margin-right: -2rem;
+    /* padding-right: -2rem; */
 }
 
 .login-subtitle {
@@ -86,6 +90,14 @@
         inset 4px 4px 5px rgba(38, 223, 33, 0.08);
 }
 
+.login-btn:focus {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
 .login-footer {
     font-family: IBM Plex Mono;
     font-style: normal;
@@ -99,5 +111,8 @@
 @media only screen and (max-width: 670px) {
     .login-bottom {
         margin: 0 1rem 1rem 1rem;
+    }
+    .login-footer {
+        margin-top: 0rem;
     }
 }
