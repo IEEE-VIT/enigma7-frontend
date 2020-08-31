@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
-import Timer from "./pages/timer/TimerPage";
-import Question from "./pages/question/QuestionPage";
-import Login from "./pages/login/LoginPage";
-import FirstLogin from "./pages/firstLogin/FirstLoginPage";
+import TimerPage from "./pages/timer/TimerPage";
+import QuestionPage from "./pages/question/QuestionPage";
+import LoginPage from "./pages/login/LoginPage";
+import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
 
 const App = () => {
     return (
@@ -17,10 +17,10 @@ const App = () => {
             }}
         >
             <Switch>
-                <Route exact path="/" component={Question} />
-                <Route exact path="/startNow" component={Timer} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/firstLogin" component={FirstLogin} />
+                <Route exact path="/" component={QuestionPage} />
+                <Route exact path="/startNow" component={TimerPage} />
+                <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/firstLogin" component={FirstLoginPage} />
             </Switch>
         </Layout>
     );

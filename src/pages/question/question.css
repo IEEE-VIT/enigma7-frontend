@@ -35,6 +35,14 @@
     margin: 0 1rem;
 }
 
+.question-powerup-box:hover {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
 .question-main {
     font-family: IBM Plex Mono;
     font-style: normal;
@@ -63,10 +71,7 @@
     font-size: 18px;
     line-height: 22px;
     margin: 1rem 0;
-}
-
-.question-hint-btn:hover {
-    cursor: pointer;
+    cursor: crosshair;
 }
 
 .question-input {
@@ -81,6 +86,14 @@
     color: #26df21;
     border: 1px solid #1db818;
     box-sizing: border-box;
+}
+
+.question-btn:hover {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
 }
 
 .question-form {
