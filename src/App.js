@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import Timer from "./pages/timer/timer";
 import Question from "./pages/question/question";
 import MainPage from "./pages/main/main";
+import LeaderBoard from "./pages/leaderboard/leaderboard";
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route exact path="/" component={Question} />
                 <Route exact path="/startNow" component={Timer} />
                 <Route exact path="/main" component={MainPage} />
+                <Route exact path="/leaderboard" component={LeaderBoard} />
             </Switch>
         </Layout>
     );
