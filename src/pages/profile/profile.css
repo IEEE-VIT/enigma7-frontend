@@ -39,8 +39,8 @@
 }
 .edit-button {
     background-color: #080e08;
-    width: 3.2%;
-    height: 3.2%;
+    width: 35px;
+    height: 35px;
     padding: 0;
     margin: 0;
     outline: none;
@@ -51,17 +51,15 @@
 .input-highlight {
     background-color: rgba(24, 47, 36, 0.7);
 }
-.sign-out {
+.next-page {
     margin: auto;
-    border: 2px solid #1db818;
-    box-sizing: border-box;
-    width: 10%;
+    height: auto;
     text-align: center;
     padding: 0.25%;
 }
-.sign-out button {
+.next-page button {
     background-color: #080e08;
-
     border: none;
     outline: none;
+    font-weight: bold;
 }

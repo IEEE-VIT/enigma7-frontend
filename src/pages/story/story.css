@@ -1,0 +1,32 @@
+.story-content {
+    font-size: 130%;
+    padding: 0;
+    margin: 1.2% 0 auto 4.2%;
+}
+.story-heading {
+    font-size: 175%;
+    font-weight: bold;
+}
+div.story-body {
+    width: 100%;
+    height: 65vh;
+    overflow-y: scroll;
+}
+
+.story-body {
+    margin-top: 1%;
+    width: 70vw;
+    padding-right: 15%;
+}
+::-webkit-scrollbar {
+    overflow: hidden;
+}
+div::-webkit-scrollbar {
+    width: 12px;
+    background-color: #080e08;
+    border-radius: 10px;
+}
+div::-webkit-scrollbar-thumb {
+    background: #1db818;
+    border-radius: 10px;
+}

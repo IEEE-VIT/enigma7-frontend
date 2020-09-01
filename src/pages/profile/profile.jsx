@@ -65,8 +65,9 @@ const Profile = () => {
                         <div className="profile-value">3</div>
                     </div>
                 </div>
-                <div className="sign-out">
-                    <button type="button">Sign out</button>
+                <div className="next-page">
+                    <button type="button">Press ENTER to continue</button>|
+                    <button type="button">Press L to logout</button>
                 </div>
             </div>
         </Layout>
