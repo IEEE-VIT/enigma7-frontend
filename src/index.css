@@ -15,10 +15,7 @@ body {
     color: #26df21;
     font-family: "IBM Plex Mono", monospace;
     position: relative;
-}
-
-html {
-    cursor: url("https://i.ibb.co/LtR9LJr/cursor.png"), auto;
+    cursor: url("./images/cursor.svg"), auto;
 }
 
 .page {

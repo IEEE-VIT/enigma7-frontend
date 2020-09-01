@@ -8,7 +8,7 @@ const LeaderBoard = () => {
     const [leaders] = useState(leaderlist);
 
     return (
-        <Layout className="page">
+        <Layout className="page leader">
             <NavBar />
             <div className="flex-container">
                 <div className="leaderboard-container">

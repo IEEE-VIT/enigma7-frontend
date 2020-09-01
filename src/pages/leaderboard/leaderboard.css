@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 3rem;
 }
 
 .leaderboard-container {
@@ -50,4 +51,17 @@ thead {
 
 .username {
     text-align: left;
+}
+
+.leader {
+    height: 100%;
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+    body {
+        font-size: x-small;
+    }
 }
