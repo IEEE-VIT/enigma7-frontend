@@ -64,4 +64,7 @@ thead {
     body {
         font-size: x-small;
     }
+    .leader {
+        margin: 0.625rem;
+    }
 }
