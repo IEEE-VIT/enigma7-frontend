@@ -13,7 +13,6 @@ const Login = () => {
     const appleBtn = useRef(null);
 
     useEffect(() => {
-        console.log("eff");
         googleBtn.current.focus();
     }, []);
 

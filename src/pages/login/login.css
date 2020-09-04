@@ -118,6 +118,7 @@
         margin: 0 1rem 1rem 1rem;
     }
     .login-footer {
+        display: none;
         margin-top: 0rem;
     }
 }
