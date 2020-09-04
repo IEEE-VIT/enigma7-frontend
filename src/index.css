@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 
 body {
     margin: 0;
@@ -12,4 +13,21 @@ body {
 
 html {
     cursor: url("https://i.ibb.co/LtR9LJr/cursor.png"), auto;
+}
+
+.page {
+    background: #080e08;
+    height: 92vh;
+    width: 94vw;
+    margin: 2rem;
+    display: flex;
+    overflow-y: hidden;
+}
+
+@media only screen and (max-width: 330px) {
+    .page {
+        height: 94vh;
+        width: 94vw;
+        margin: 1rem;
+    }
 }

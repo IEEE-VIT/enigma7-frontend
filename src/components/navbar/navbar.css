@@ -1,0 +1,61 @@
+.header {
+    background: rgba(24, 47, 36, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.ant-typography + h1.ant-typography,
+.ant-typography + h2.ant-typography,
+.ant-typography + h3.ant-typography,
+.ant-typography + h4.ant-typography {
+    margin-top: 0;
+}
+
+.nav-text {
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px !important;
+    line-height: 27px;
+    color: #1db818 !important;
+}
+
+.nav-heading {
+    font-family: VT323;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 42px !important;
+    line-height: 42px !important;
+    color: #1db818 !important;
+    letter-spacing: 1rem;
+}
+
+.question-mark {
+    padding: 0.5rem;
+    border: 1px solid #1db818;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 19px !important;
+    line-height: 22px;
+}
+
+@media only screen and (max-width: 670px) {
+    .ant-layout-header {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    /* .nav-heading{
+        letter-spacing: 25px;
+
+    } */
+}
+
+@media only screen and (max-width: 330px) {
+    .ant-layout-header {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
