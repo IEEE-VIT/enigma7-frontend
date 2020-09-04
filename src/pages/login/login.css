@@ -115,3 +115,15 @@
         margin-top: 0rem;
     }
 }
+
+@media only screen and (max-width: 330px) {
+    .login-title {
+        letter-spacing: 1rem;
+        margin-right: -1rem;
+        /* padding-right: -2rem; */
+    }
+
+    .login-page {
+        overflow-y: scroll;
+    }
+}

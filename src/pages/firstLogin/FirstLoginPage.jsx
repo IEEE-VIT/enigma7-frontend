@@ -23,7 +23,7 @@ const FirstLogin = () => {
                 <div className="first-login-heading">Profile setup</div>
                 <div className="first-login-content">
                     <div className="first-login-question">
-                        How you want to be know as
+                        How you want to be know as?
                         <br /> [this can’t be edited later]
                     </div>
                     <Form
@@ -49,15 +49,6 @@ const FirstLogin = () => {
                 </div>
             </div>
             <div className="first-login-footer">{footer}</div>
-            {/* {error ? (
-                <div className="first-login-footer">
-                    Press ENTER to continue
-                </div>
-            ) : (
-                <div className="first-login-footer">
-                    Press ENTER to continue | BACSKSPACE to clear{" "}
-                </div>
-            )} */}
         </div>
     );
 };
