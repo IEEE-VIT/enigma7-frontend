@@ -8,8 +8,13 @@
     scrollbar-width: thin;
 }
 
-.first-login ::-webkit-scrollbar {
+.first-login::-webkit-scrollbar {
     display: none;
+}
+
+.first-login {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .first-login-heading {

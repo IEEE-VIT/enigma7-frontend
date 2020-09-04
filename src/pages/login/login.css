@@ -6,6 +6,12 @@
     text-align: center;
     overflow: hidden;
     overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.login-page::-webkit-scrollbar {
+    display: none;
 }
 
 .login-header-background {
