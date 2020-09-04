@@ -35,6 +35,14 @@
     margin: 0 1rem;
 }
 
+.question-powerup-box:hover {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
 .question-main {
     font-family: IBM Plex Mono;
     font-style: normal;
@@ -63,23 +71,39 @@
     font-size: 18px;
     line-height: 22px;
     margin: 1rem 0;
-}
-
-.question-hint-btn:hover {
-    cursor: pointer;
+    cursor: crosshair;
 }
 
 .question-input {
     background: rgba(24, 47, 36, 0.3);
     border: none;
     color: #1db818;
+    caret-color: #1db818;
+    height: 2.5rem;
 }
 
 .question-btn {
+    margin: 1rem 0;
     background: 0%;
     color: #26df21;
     border: 1px solid #1db818;
     box-sizing: border-box;
+}
+
+.question-btn:hover {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
+.question-btn:focus {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
 }
 
 .question-form {
@@ -93,7 +117,52 @@
     justify-self: center;
 }
 
-@media only screen and (max-width: 600px) {
+/* antd modal modification */
+.ant-modal {
+    background: #080e08;
+    border: 4px solid rgba(24, 47, 36, 0.8);
+    padding-bottom: 0px;
+    position: relative;
+    top: 35vh;
+}
+
+.ant-modal-header {
+    background: rgba(24, 47, 36, 0.8);
+    height: 4rem;
+    border: 0;
+}
+
+.ant-modal-body {
+    background: #080e08;
+    border: 0;
+    color: #eef4e8;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.ant-modal-footer {
+    background: #080e08;
+    border: 0;
+    display: flex;
+    justify-content: center;
+}
+.ant-modal-footer button {
+    background: #080e08;
+    color: #ffffff;
+    border: 2px solid #eef4e8;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+
+    color: #eef4e8;
+}
+
+@media only screen and (max-width: 760px) {
     .question-powerup-box {
         width: 5rem;
         height: 3rem;
@@ -106,5 +175,20 @@
 @media only screen and (max-height: 730px) {
     .question-body {
         padding: 20rem 0 !important;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .question-body {
+        max-width: none;
+        width: 280px;
+    }
+
+    .question-box {
+        width: 280px;
+        height: 10rem;
+        border: 2px solid #1db818;
+        box-sizing: border-box;
+        margin: 2rem 0;
     }
 }

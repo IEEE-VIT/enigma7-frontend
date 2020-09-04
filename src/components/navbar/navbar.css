@@ -42,7 +42,7 @@
     line-height: 22px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 670px) {
     .ant-layout-header {
         padding-right: 30px;
         padding-left: 30px;
@@ -51,4 +51,11 @@
         letter-spacing: 25px;
 
     } */
+}
+
+@media only screen and (max-width: 330px) {
+    .ant-layout-header {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
 }
