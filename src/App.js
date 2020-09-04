@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import MainPage from "./pages/main/main";
-import LeaderBoard from "./pages/leaderboard/leaderboard";
+import LeaderBoardPage from "./pages/leaderboard/LeaderBoardPage";
 import TimerPage from "./pages/timer/TimerPage";
 import QuestionPage from "./pages/question/QuestionPage";
 import LoginPage from "./pages/login/LoginPage";
@@ -20,7 +20,7 @@ const App = () => {
         >
             <Switch>
                 <Route exact path="/main" component={MainPage} />
-                <Route exact path="/leaderboard" component={LeaderBoard} />
+                <Route exact path="/leaderboard" component={LeaderBoardPage} />
                 <Route exact path="/" component={QuestionPage} />
                 <Route exact path="/startNow" component={TimerPage} />
                 <Route exact path="/login" component={LoginPage} />

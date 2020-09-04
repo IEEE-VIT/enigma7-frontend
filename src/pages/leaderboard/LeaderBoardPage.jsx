@@ -4,7 +4,7 @@ import NavBar from "../../components/navbar/navbar";
 import "./leaderboard.css";
 import { leaderlist } from "../../leaderlist";
 
-const LeaderBoard = () => {
+const LeaderBoardPage = () => {
     const [leaders] = useState(leaderlist);
 
     return (
@@ -46,4 +46,4 @@ const LeaderBoard = () => {
     );
 };
 
-export default LeaderBoard;
+export default LeaderBoardPage;
