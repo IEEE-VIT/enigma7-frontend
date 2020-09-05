@@ -1,10 +1,10 @@
 .story-content {
-    font-size: 130%;
+    font-size: 1rem;
     padding: 0;
-    margin: 1.2% 0 auto 4.2%;
+    margin: 0.8rem 0 auto 2.5rem;
 }
 .story-heading {
-    font-size: 175%;
+    font-size: 1.8rem;
     font-weight: bold;
 }
 div.story-body {
@@ -14,9 +14,8 @@ div.story-body {
 }
 
 .story-body {
-    margin-top: 1%;
-    width: 70vw;
-    padding-right: 15%;
+    margin-top: 0.6rem;
+    padding-right: 8rem;
 }
 ::-webkit-scrollbar {
     overflow: hidden;

@@ -5,7 +5,7 @@ import NavBar from "../../components/navbar/navbar";
 import Edit from "../../images/editIcon.png";
 import Save from "../../images/saveIcon.png";
 
-const Profile = () => {
+const ProfilePage = () => {
     const [disableState, setDisableState] = useState(true);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -73,4 +73,4 @@ const Profile = () => {
         </Layout>
     );
 };
-export default Profile;
+export default ProfilePage;

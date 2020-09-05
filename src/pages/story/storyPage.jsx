@@ -3,7 +3,7 @@ import "./story.css";
 import { Layout } from "antd";
 import NavBar from "../../components/navbar/navbar";
 
-const Story = () => {
+const StoryPage = () => {
     const [story, setStory] = useState("");
     useEffect(() => {
         setStory(
@@ -57,4 +57,4 @@ const Story = () => {
         </Layout>
     );
 };
-export default Story;
+export default StoryPage;
