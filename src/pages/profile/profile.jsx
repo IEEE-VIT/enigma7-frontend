@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./profile.css";
 import { Layout } from "antd";
 import NavBar from "../../components/navbar/navbar";
-import Edit from "./editIcon.png";
-import Save from "./saveIcon.png";
+import Edit from "../../images/editIcon.png";
+import Save from "../../images/saveIcon.png";
 
 const Profile = () => {
     const [disableState, setDisableState] = useState(true);
