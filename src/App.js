@@ -1,10 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
-import Timer from "./pages/timer/timer";
-import Question from "./pages/question/question";
 import Profile from "./pages/profile/profile";
 import Story from "./pages/story/story";
+import MainPage from "./pages/main/main";
+import LeaderBoardPage from "./pages/leaderboard/LeaderBoardPage";
+import TimerPage from "./pages/timer/TimerPage";
+import QuestionPage from "./pages/question/QuestionPage";
+import LoginPage from "./pages/login/LoginPage";
+import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
 
 const App = () => {
     return (
@@ -17,10 +21,14 @@ const App = () => {
             }}
         >
             <Switch>
-                <Route exact path="/" component={Question} />
-                <Route exact path="/startNow" component={Timer} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/story" component={Story} />
+                <Route exact path="/main" component={MainPage} />
+                <Route exact path="/leaderboard" component={LeaderBoardPage} />
+                <Route exact path="/" component={QuestionPage} />
+                <Route exact path="/startNow" component={TimerPage} />
+                <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/firstLogin" component={FirstLoginPage} />
             </Switch>
         </Layout>
     );

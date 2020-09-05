@@ -1,0 +1,13 @@
+.button-container {
+    color: #26df21 !important;
+    font-family: IBM Plex Mono;
+    font-size: 26px;
+    padding: 8px 50px;
+    border-radius: 0;
+    text-align: center;
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.button-container:hover {
+    border: 2px solid rgba(38, 223, 33, 0.2);
+}

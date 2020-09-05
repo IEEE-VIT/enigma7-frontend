@@ -2,25 +2,25 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react";
-import { Layout, Progress, Form, Input, Button } from "antd";
+import { Layout, Progress, Input, Button } from "antd";
 import "./question.css";
 import Modal from "antd/lib/modal/Modal";
+import { useHistory } from "react-router-dom";
 import NavBar from "../../components/navbar/navbar";
+import useKeyPress from "../../hooks/useKeyPress";
 
 const { Content } = Layout;
 
-const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
-};
-const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
-};
-
 const Question = () => {
-    const [modal, showModal] = useState(true);
-    const onFinish = (values) => {
-        console.log("Answer:", values);
+    const [modal, showModal] = useState(false);
+    const [answer, setAnswer] = useState("");
+    const history = useHistory();
+    if (useKeyPress("Escape")) {
+        history.push("/main");
+    }
+
+    const onAnswer = () => {
+        console.log("Answer:", answer);
         showModal(true);
     };
 
@@ -98,34 +98,19 @@ const Question = () => {
                     <div className="question-hint-btn" onClick={onHintClick}>
                         [ Use hint ]
                     </div>
-                    <Form
-                        {...layout}
-                        name="basic"
-                        onFinish={onFinish}
-                        className="question-form"
-                    >
-                        <Form.Item
-                            name="Answer"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Please input your answer!",
-                                },
-                            ]}
-                        >
-                            <Input className="question-input" />
-                        </Form.Item>
+                    <Input
+                        onChange={(event) => setAnswer(event.target.value)}
+                        className="question-input"
+                    />
 
-                        <Form.Item {...tailLayout}>
-                            <Button
-                                type="primary"
-                                className="question-btn"
-                                htmlType="submit"
-                            >
-                                Submit
-                            </Button>
-                        </Form.Item>
-                    </Form>
+                    <Button
+                        type="primary"
+                        className="question-btn"
+                        htmlType="submit"
+                        onClick={onAnswer}
+                    >
+                        Submit
+                    </Button>
                 </div>
                 <Modal
                     visible={modal}
