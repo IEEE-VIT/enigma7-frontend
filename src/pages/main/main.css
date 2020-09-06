@@ -21,4 +21,11 @@
 } */
 
 .main-buttons {
+    margin: 0 0 6rem 0;
+}
+
+@media only screen and (max-width: 760px) {
+    .main-buttons {
+        margin: 0;
+    }
 }
