@@ -16,7 +16,7 @@ const Question = () => {
     const [answer, setAnswer] = useState("");
     const history = useHistory();
     if (useKeyPress("Escape")) {
-        history.push("/main");
+        history.push("/menu");
     }
 
     const onAnswer = () => {

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
 import { Layout } from "antd";
+import { useHistory } from "react-router-dom";
 import NavBar from "../../components/navbar/navbar";
+import useKeyPress from "../../hooks/useKeyPress";
 
 const StoryPage = () => {
     const [story, setStory] = useState("");
+    const history = useHistory();
+    if (useKeyPress("Escape")) {
+        history.push("/menu");
+    }
     useEffect(() => {
         setStory(
             <div>
