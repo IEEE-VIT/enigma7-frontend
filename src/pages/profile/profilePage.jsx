@@ -19,8 +19,8 @@ const ProfilePage = () => {
         <Layout className="page">
             <NavBar />
             <div className="profile-content">
-                <div className="profile-heading">Profile</div>
                 <div className="profile-body">
+                    <div className="profile-heading">Profile</div>
                     <div className="profile-editName profile-header">
                         Name
                         <br />
@@ -48,21 +48,21 @@ const ProfilePage = () => {
                             />
                         </button>
                     </div>
-                    <div className="profile-header ">
+                    <div className="profile-header">
                         User Name:
-                        <div className="profile-value">Valid UserName</div>
+                        <p className="profile-value">Valid UserName</p>
                     </div>
                     <div className="profile-header">
                         Email ID:
-                        <div className="profile-value">xyz@gmail.com</div>
+                        <p className="profile-value">xyz@gmail.com</p>
                     </div>
                     <div className="profile-header">
                         Questions Solved:
-                        <div className="profile-value">12</div>
+                        <p className="profile-value">12</p>
                     </div>
                     <div className="profile-header">
                         Rank:
-                        <div className="profile-value">3</div>
+                        <p className="profile-value">3</p>
                     </div>
                 </div>
                 <div className="next-page">

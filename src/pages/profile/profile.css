@@ -1,17 +1,14 @@
 .profile-content {
     font-size: 1.1rem;
     margin: 0;
-    padding: 1rem 0 2rem 2rem;
-    position: relative;
     height: 100%;
+}
+.profile-body {
+    padding: 2rem;
 }
 .profile-heading {
     font-weight: bold;
     font-size: 1.8rem;
-}
-.profile-body {
-    margin: 1% 0;
-    padding: 0;
 }
 .profile-header {
     font-weight: bold;
@@ -53,12 +50,9 @@
     background-color: rgba(24, 47, 36, 0.7);
 }
 .next-page {
-    margin: auto;
-    height: auto;
-    padding: 0.6rem;
     position: absolute;
-    bottom: 0;
-    width: 80%;
+    width: 94%;
+    bottom: 4rem;
     text-align: center;
 }
 .next-page button {
@@ -66,4 +60,19 @@
     border: none;
     outline: none;
     font-weight: bold;
+}
+
+@media (max-width: 575px) {
+    .profile-content {
+        padding: 1rem;
+    }
+    .input-default {
+        width: 70%;
+    }
+    .input-highlight {
+        width: 70%;
+    }
+    .next-page {
+        display: none;
+    }
 }
