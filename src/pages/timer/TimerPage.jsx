@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState, useEffect } from "react";
 import { Statistic } from "antd";
 import "./timer.css";
 import { useHistory } from "react-router-dom";
 import useKeyPress from "../../hooks/useKeyPress";
 
 const { Countdown } = Statistic;
-const deadline = Date.now() + 1000 * 10;
 
 const Timer = () => {
     const history = useHistory();
     const [startNow, setStartNow] = useState(false);
+    const [deadline, setDeadline] = useState(false);
+
+    useEffect(() => {
+        setDeadline(Date.now() + 1000 * 10);
+    }, []);
     if (useKeyPress("Enter") && startNow) {
         console.log("done");
         history.push("/menu");
@@ -28,7 +34,12 @@ const Timer = () => {
                 <div> </div>
             ) : (
                 <div>
-                    <div className="timer-start-now">START NOW</div>
+                    <div
+                        className="timer-start-now"
+                        onClick={() => history.push("/menu")}
+                    >
+                        START NOW
+                    </div>
                     <div className="timer-footer">Press ENTER to continue</div>
                 </div>
             )}
