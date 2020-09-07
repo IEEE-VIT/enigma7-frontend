@@ -12,7 +12,7 @@ const Timer = () => {
     const [startNow, setStartNow] = useState(false);
     if (useKeyPress("Enter") && startNow) {
         console.log("done");
-        history.push("/");
+        history.push("/menu");
     }
     const onFinish = () => {
         console.log("finished!");

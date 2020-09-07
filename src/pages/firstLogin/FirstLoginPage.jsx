@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import "./firstLogin.css";
 import { Form, Input } from "antd";
+import { useHistory } from "react-router-dom";
+import useKeyPress from "../../hooks/useKeyPress";
 
 const FirstLogin = () => {
     const [error, setError] = useState();
     const [footer, setFooter] = useState("Press ENTER to continue");
+    const history = useHistory();
     const onFinish = (values) => {
         console.log(values);
         setError("error 404! no backend found");
     };
+    if (useKeyPress("Enter")) {
+        console.log("done");
+        // onFinish();
+        history.push("/startNow");
+    }
 
     const onValuesChange = (values) => {
         if (values.username === "") {

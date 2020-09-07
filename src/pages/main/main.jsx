@@ -12,10 +12,10 @@ const MainPage = () => {
                     <img src={logo} alt="enigma.svg" />
                 </div>
                 <div className="buttons">
-                    <Buttons name="Questions" />
-                    <Buttons name="Profile" />
-                    <Buttons name="Story" />
-                    <Buttons name="Leaderboard" />
+                    <Buttons redirect="Questions" name="Questions" />
+                    <Buttons redirect="profile" name="Profile" />
+                    <Buttons redirect="story" name="Story" />
+                    <Buttons redirect="leaderboard" name="Leaderboard" />
                 </div>
             </div>
         </Layout>

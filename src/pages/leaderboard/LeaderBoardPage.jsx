@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
+import { useHistory } from "react-router-dom";
 import NavBar from "../../components/navbar/navbar";
 import "./leaderboard.css";
 import { leaderlist } from "../../leaderlist";
+import useKeyPress from "../../hooks/useKeyPress";
 
 const LeaderBoardPage = () => {
     const [leaders] = useState(leaderlist);
-
+    const history = useHistory();
+    if (useKeyPress("Escape")) {
+        history.push("/menu");
+    }
     return (
         <Layout className="page leader">
             <NavBar />

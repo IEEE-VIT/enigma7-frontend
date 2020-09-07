@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "./profile.css";
 import { Layout } from "antd";
+import { useHistory } from "react-router-dom";
 import NavBar from "../../components/navbar/navbar";
 import Edit from "../../images/editIcon.png";
 import Save from "../../images/saveIcon.png";
+import useKeyPress from "../../hooks/useKeyPress";
 
 const ProfilePage = () => {
     const [disableState, setDisableState] = useState(true);
+    const history = useHistory();
+    if (useKeyPress("Escape")) {
+        history.push("/menu");
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         if (disableState === true) {
