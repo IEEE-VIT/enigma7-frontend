@@ -1,13 +1,24 @@
 import React from "react";
 import { Typography, Layout } from "antd";
 import "./navbar.css";
+import { useHistory } from "react-router-dom";
 
 const { Header } = Layout;
 
 const NavBar = () => {
+    const history = useHistory();
+
+    const onEscPress = () => {
+        history.push("/menu");
+    };
+
     return (
         <Header className="header">
-            <Typography.Title level={3} className="nav-text">
+            <Typography.Title
+                onClick={onEscPress}
+                level={3}
+                className="nav-text"
+            >
                 Esc
             </Typography.Title>
             <Typography.Title level={3} className="nav-heading">

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import "./login.css";
 import { Typography, Button } from "antd";
 import { useHistory } from "react-router-dom";
@@ -12,9 +12,9 @@ const Login = () => {
     const googleBtn = useRef(null);
     const appleBtn = useRef(null);
 
-    useEffect(() => {
-        googleBtn.current.focus();
-    }, []);
+    // useEffect(() => {
+    //     googleBtn.current.focus();
+    // }, []);
 
     if (useKeyPress("ArrowDown")) {
         appleBtn.current.focus();
