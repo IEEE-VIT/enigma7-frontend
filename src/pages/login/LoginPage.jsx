@@ -9,7 +9,7 @@ import useKeyPress from "../../hooks/useKeyPress";
 const Login = () => {
     const history = useHistory();
     const onSignUpWithGoogle = () => {
-        console.log(process.env.REACT_APP_CLIENT_ID);
+        console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
         axios({
             method: "get",
             url: `https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2F&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=offline&flowName=GeneralOAuthFlow`,
