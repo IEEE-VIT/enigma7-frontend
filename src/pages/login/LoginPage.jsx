@@ -2,12 +2,42 @@ import React, { useRef } from "react";
 import "./login.css";
 import { Typography, Button } from "antd";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { GoogleLogin } from "react-google-login";
 import useKeyPress from "../../hooks/useKeyPress";
 
 const Login = () => {
     const history = useHistory();
     const onSignUpWithGoogle = () => {
-        history.push("/firstLogin");
+        console.log(process.env.REACT_APP_CLIENT_ID);
+        axios({
+            method: "get",
+            url: `https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2F&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=offline&flowName=GeneralOAuthFlow`,
+            headers: { "Access-Control-Allow-Origin": "*" },
+        })
+            .then((response) => {
+                // handle success
+                console.log("google first endpoint", response);
+                history.push("/firstLogin");
+            })
+            .catch((error) => {
+                // handle error
+                console.log(error);
+            })
+            .then(() => {
+                // always executed
+            });
+        // axios
+        //     .get(
+        //         `https://accounts.google.com/o/oauth2/v2/auth?
+        //     scope=profile+email&
+        //     access_type=offline&
+        //     redirect_uri="http://localhost:3000/"&
+        //     response_type=code&
+        //     client_id="${process.env.REACT_APP_CLIENT_ID}"`
+        //     )
+
+        // history.push("/firstLogin");
     };
     const googleBtn = useRef(null);
     const appleBtn = useRef(null);
@@ -39,6 +69,13 @@ const Login = () => {
             </div>
             <div className="login-bottom">
                 <div className="login-btn-group">
+                    <GoogleLogin
+                        clientId={process.env.REACT_APP_CLIENT_ID}
+                        buttonText="Login"
+                        onSuccess={() => console.log("suucess")}
+                        onFailure={() => console.log("faliure")}
+                        cookiePolicy="single_host_origin"
+                    />
                     <Button
                         onClick={onSignUpWithGoogle}
                         className="login-btn"
