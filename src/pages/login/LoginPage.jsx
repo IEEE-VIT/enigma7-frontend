@@ -1,43 +1,43 @@
+/* eslint-disable camelcase */
 import React, { useRef } from "react";
 import "./login.css";
 import { Typography, Button } from "antd";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { GoogleLogin } from "react-google-login";
+import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
 
 const Login = () => {
     const history = useHistory();
-    const onSignUpWithGoogle = () => {
+    const onSignUpWithGoogle = (response) => {
         console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
-        axios({
-            method: "get",
-            url: `https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2F&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=offline&flowName=GeneralOAuthFlow`,
-            headers: { "Access-Control-Allow-Origin": "*" },
-        })
-            .then((response) => {
-                // handle success
-                console.log("google first endpoint", response);
-                history.push("/firstLogin");
+        console.log(response);
+        console.log(response.code);
+        console.log("backendurl:>>", process.env.REACT_APP_BACKEND_URL);
+        Axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/users/auth/google`,
+            {
+                code: response.code,
+                callback_url: "http://127.0.0.1:8000/",
+            },
+            {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                },
+            }
+        )
+            .then((res) => {
+                console.log("Google auth Own backend response", res);
+                const { key, username_exists } = res;
+                console.log("key:>>", key);
+                if (username_exists) {
+                    return history.push("/firstLogin");
+                }
+                return history.push("/menu");
             })
-            .catch((error) => {
-                // handle error
-                console.log(error);
-            })
-            .then(() => {
-                // always executed
+            .catch((e) => {
+                console.error("google Auth own backend error", e);
             });
-        // axios
-        //     .get(
-        //         `https://accounts.google.com/o/oauth2/v2/auth?
-        //     scope=profile+email&
-        //     access_type=offline&
-        //     redirect_uri="http://localhost:3000/"&
-        //     response_type=code&
-        //     client_id="${process.env.REACT_APP_CLIENT_ID}"`
-        //     )
-
-        // history.push("/firstLogin");
     };
     const googleBtn = useRef(null);
     const appleBtn = useRef(null);
@@ -72,21 +72,26 @@ const Login = () => {
                     <GoogleLogin
                         clientId={process.env.REACT_APP_CLIENT_ID}
                         buttonText="Login"
-                        onSuccess={() => console.log("suucess")}
+                        onSuccess={onSignUpWithGoogle}
                         onFailure={() => console.log("faliure")}
                         cookiePolicy="single_host_origin"
+                        responseType="code"
+                        render={(renderProps) => (
+                            <Button
+                                onClick={renderProps.onClick}
+                                disabled={renderProps.disabled}
+                                className="login-btn"
+                                type="primary"
+                                ref={googleBtn}
+                                autofocus
+                            >
+                                Sign up with Google
+                            </Button>
+                        )}
                     />
+
                     <Button
-                        onClick={onSignUpWithGoogle}
-                        className="login-btn"
-                        type="primary"
-                        ref={googleBtn}
-                        autofocus
-                    >
-                        Sign up with Google
-                    </Button>
-                    <Button
-                        onClick={onSignUpWithGoogle}
+                        onClick={() => "apple login"}
                         className="login-btn"
                         type="primary"
                         ref={appleBtn}
