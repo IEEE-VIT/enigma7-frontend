@@ -1,13 +1,43 @@
+/* eslint-disable camelcase */
 import React, { useRef } from "react";
 import "./login.css";
 import { Typography, Button } from "antd";
 import { useHistory } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
+import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
 
 const Login = () => {
     const history = useHistory();
-    const onSignUpWithGoogle = () => {
-        history.push("/firstLogin");
+    const onSignUpWithGoogle = (response) => {
+        console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
+        console.log(response);
+        console.log(response.code);
+        console.log("backendurl:>>", process.env.REACT_APP_BACKEND_URL);
+        Axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/users/auth/google`,
+            {
+                code: response.code,
+                callback_url: "http://127.0.0.1:8000/",
+            },
+            {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                },
+            }
+        )
+            .then((res) => {
+                console.log("Google auth Own backend response", res);
+                const { key, username_exists } = res;
+                console.log("key:>>", key);
+                if (username_exists) {
+                    return history.push("/firstLogin");
+                }
+                return history.push("/menu");
+            })
+            .catch((e) => {
+                console.error("google Auth own backend error", e);
+            });
     };
     const googleBtn = useRef(null);
     const appleBtn = useRef(null);
@@ -39,17 +69,29 @@ const Login = () => {
             </div>
             <div className="login-bottom">
                 <div className="login-btn-group">
+                    <GoogleLogin
+                        clientId={process.env.REACT_APP_CLIENT_ID}
+                        buttonText="Login"
+                        onSuccess={onSignUpWithGoogle}
+                        onFailure={() => console.log("faliure")}
+                        cookiePolicy="single_host_origin"
+                        responseType="code"
+                        render={(renderProps) => (
+                            <Button
+                                onClick={renderProps.onClick}
+                                disabled={renderProps.disabled}
+                                className="login-btn"
+                                type="primary"
+                                ref={googleBtn}
+                                autofocus
+                            >
+                                Sign up with Google
+                            </Button>
+                        )}
+                    />
+
                     <Button
-                        onClick={onSignUpWithGoogle}
-                        className="login-btn"
-                        type="primary"
-                        ref={googleBtn}
-                        autofocus
-                    >
-                        Sign up with Google
-                    </Button>
-                    <Button
-                        onClick={onSignUpWithGoogle}
+                        onClick={() => "apple login"}
                         className="login-btn"
                         type="primary"
                         ref={appleBtn}
