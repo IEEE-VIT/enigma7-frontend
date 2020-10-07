@@ -49,7 +49,10 @@ const ProfilePage = () => {
             <div className="profile-content">
                 <div className="profile-body">
                     <div className="profile-heading">Profile</div>
-                    <div className="profile-editName profile-header">
+                    <div
+                        className="profile-editName profile-header"
+                        value={setUpProfile}
+                    >
                         Name
                         <br />
                         <input
@@ -78,9 +81,7 @@ const ProfilePage = () => {
                     </div>
                     <div className="profile-header">
                         User Name:
-                        <p className="profile-value" value={setUpProfile}>
-                            Valid UserName
-                        </p>
+                        <p className="profile-value">Valid UserName</p>
                     </div>
                     <div className="profile-header">
                         Email ID:
