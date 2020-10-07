@@ -10,10 +10,6 @@ import useKeyPress from "../../hooks/useKeyPress";
 const Login = () => {
     const history = useHistory();
     const onSignUpWithGoogle = (response) => {
-        console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
-        console.log(response);
-        console.log(response.code);
-        console.log("backendurl:>>", process.env.REACT_APP_BACKEND_URL);
         Axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/users/auth/google`,
             {
@@ -27,9 +23,8 @@ const Login = () => {
             }
         )
             .then((res) => {
-                console.log("Google auth Own backend response", res);
+                // eslint-disable-next-line no-unused-vars
                 const { key, username_exists } = res;
-                console.log("key:>>", key);
                 if (username_exists) {
                     return history.push("/firstLogin");
                 }
