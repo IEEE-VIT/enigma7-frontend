@@ -1,12 +1,26 @@
 import React from "react";
 import { Layout } from "antd";
 import { useHistory } from "react-router-dom";
+import Axios from "axios";
 import NavBar from "../../components/navbar/navbar";
 import "./leaderboard.css";
 import useKeyPress from "../../hooks/useKeyPress";
 
-const LeaderBoardPage = ({ leaders }) => {
+const LeaderBoardPage = () => {
     const history = useHistory();
+    const leaders = (response) => {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/leaderboard`, {
+            headers: {
+                Authorization: response.Authorization,
+            },
+        })
+            .then((res) => {
+                return res;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
     if (useKeyPress("Escape")) {
         history.push("/menu");
     }

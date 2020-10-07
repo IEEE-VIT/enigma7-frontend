@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./profile.css";
 import { Layout } from "antd";
 import { useHistory } from "react-router-dom";
+import Axios from "axios";
 import NavBar from "../../components/navbar/navbar";
 import Edit from "../../images/editIcon.png";
 import Save from "../../images/saveIcon.png";
@@ -21,6 +22,27 @@ const ProfilePage = () => {
             setDisableState(true);
         }
     };
+
+    const setUpProfile = (response) => {
+        Axios.patch(
+            `${process.env.REACT_APP_BACKEND_URL}/users/me/edit`,
+            {
+                username: response.username,
+            },
+            {
+                headers: {
+                    Authorization: response.Authorization,
+                },
+            }
+        )
+            .then((res) => {
+                return res;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+
     return (
         <Layout className="page">
             <NavBar />
@@ -56,7 +78,9 @@ const ProfilePage = () => {
                     </div>
                     <div className="profile-header">
                         User Name:
-                        <p className="profile-value">Valid UserName</p>
+                        <p className="profile-value" value={setUpProfile}>
+                            Valid UserName
+                        </p>
                     </div>
                     <div className="profile-header">
                         Email ID:

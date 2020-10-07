@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import ProfilePage from "./pages/profile/profilePage";
@@ -10,18 +10,7 @@ import QuestionPage from "./pages/question/QuestionPage";
 import LoginPage from "./pages/login/LoginPage";
 import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
 
-import { getAllLeaderboard } from "./utils/requests";
-
 const App = () => {
-    const [leader, setLeaderboard] = useState([]);
-
-    const getData = async () => {
-        const resL = await getAllLeaderboard();
-
-        setLeaderboard(resL.leader);
-    };
-
-    getData();
     return (
         <Layout
             style={{
@@ -41,8 +30,8 @@ const App = () => {
                 <Route exact path="/menu">
                     <MainPage />
                 </Route>
-                <Route exact path="leaderboard">
-                    <LeaderBoardPage leader={leader} />
+                <Route exact path="/leaderboard">
+                    <LeaderBoardPage />
                 </Route>
                 <Route exact path="/Questions">
                     <QuestionPage />
