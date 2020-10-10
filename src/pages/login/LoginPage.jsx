@@ -27,9 +27,8 @@ const Login = () => {
             }
         )
             .then((res) => {
-                console.log("Google auth Own backend response", res);
+                // eslint-disable-next-line no-unused-vars
                 const { key, username_exists } = res;
-                console.log("key:>>", key);
                 if (username_exists) {
                     return history.push("/firstLogin");
                 }
