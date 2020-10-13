@@ -22,41 +22,31 @@ const ProfilePage = () => {
             setDisableState(true);
         }
     };
-
-    const setUpProfile = (response) => {
+    const setUsername = () => {
         Axios.patch(
             `${process.env.REACT_APP_BACKEND_URL}/users/me/edit`,
             {
-                username: response.username,
+                username: "",
             },
             {
                 headers: {
-                    Authorization: response.Authorization,
+                    Authorization: process.env.TOKEN,
                 },
             }
-        )
-            .then((res) => {
-                return res;
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        );
     };
-
     return (
         <Layout className="page">
             <NavBar />
             <div className="profile-content">
                 <div className="profile-body">
                     <div className="profile-heading">Profile</div>
-                    <div
-                        className="profile-editName profile-header"
-                        value={setUpProfile}
-                    >
+                    <div className="profile-editName profile-header">
                         Name
                         <br />
                         <input
                             type="text"
+                            value={setUsername}
                             className={
                                 disableState
                                     ? "input-default"

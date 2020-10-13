@@ -8,19 +8,18 @@ import useKeyPress from "../../hooks/useKeyPress";
 
 const LeaderBoardPage = () => {
     const history = useHistory();
-    const leaders = (response) => {
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/leaderboard`, {
-            headers: {
-                Authorization: response.Authorization,
-            },
-        })
-            .then((res) => {
-                return res;
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+    const getLeaders = async () => {
+        const leaders = await Axios.get(
+            `${process.env.REACT_APP_BACKEND_URL}/leaderboard`,
+            {
+                headers: {
+                    Authorization: process.env.TOKEN,
+                },
+            }
+        );
+        return leaders;
     };
+
     if (useKeyPress("Escape")) {
         history.push("/menu");
     }
@@ -40,7 +39,7 @@ const LeaderBoardPage = () => {
                             </tr>
                         </thead>
                         <tbody className="leaderboard-body">
-                            {leaders.map((leader) => {
+                            {getLeaders.map((leader) => {
                                 return (
                                     <tr
                                         key={leader.id}
