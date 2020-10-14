@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Progress, Input, Button } from "antd";
 import "./question.css";
 import Modal from "antd/lib/modal/Modal";
 import { useHistory } from "react-router-dom";
+import Axios from "axios";
 import NavBar from "../../components/navbar/navbar";
 import useKeyPress from "../../hooks/useKeyPress";
 
@@ -14,7 +15,31 @@ const { Content } = Layout;
 const Question = () => {
     const [modal, showModal] = useState(false);
     const [answer, setAnswer] = useState("");
+    const [question, setQuestion] = useState("");
+    const [img, setImg] = useState("");
+    const [questionId, setQuestionId] = useState("");
+
     const history = useHistory();
+    useEffect(() => {
+        const key = localStorage.getItem("key");
+        console.log("key from local storage:>>", key);
+        // get question
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/question`, {
+            headers: {
+                Authorization: key,
+            },
+        })
+            .then((res) => {
+                const { data } = res;
+                setQuestion(data.text);
+                setImg(data.img_url);
+                setQuestionId(data.id);
+                console.log(data);
+            })
+            .catch((err) => {
+                console.error("error in get question", err);
+            });
+    }, []);
     if (useKeyPress("Escape")) {
         history.push("/menu");
     }
@@ -88,13 +113,14 @@ const Question = () => {
                 </div>
                 <div className="question-main">
                     <div>
-                        <div className="question-no">Q1.</div>
-                        <div className="question-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit?
-                        </div>
+                        <div className="question-no">Q{questionId}.</div>
+                        <div className="question-text">{question}</div>
                     </div>
-                    <div className="question-box">picture</div>
+                    <img
+                        alt="enigma question"
+                        src={img}
+                        className="question-box"
+                    />
                     <div className="question-hint-btn" onClick={onHintClick}>
                         [ Use hint ]
                     </div>
