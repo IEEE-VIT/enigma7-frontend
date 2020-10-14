@@ -13,16 +13,21 @@ import useKeyPress from "../../hooks/useKeyPress";
 const { Content } = Layout;
 
 const Question = () => {
+    const history = useHistory();
+
     const [modal, showModal] = useState(false);
+    const [modalText, setModalText] = useState("Default modal text");
+
     const [answer, setAnswer] = useState("");
     const [question, setQuestion] = useState("");
     const [img, setImg] = useState("");
     const [questionId, setQuestionId] = useState("");
+    const [hint, setHint] = useState("defauflt hint");
 
-    const history = useHistory();
+    const key = localStorage.getItem("key");
+    console.log("key from local storage:>>", key);
+
     useEffect(() => {
-        const key = localStorage.getItem("key");
-        console.log("key from local storage:>>", key);
         // get question
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/question`, {
             headers: {
@@ -63,7 +68,24 @@ const Question = () => {
     };
     const onHintClick = () => {
         console.log("used hint");
-        showModal(true);
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/hint`, {
+            headers: {
+                Authorization: key,
+            },
+        })
+            .then((res) => {
+                const { data } = res;
+                console.log(data);
+                return data;
+            })
+            .then((data) => {
+                setHint(data.hint);
+                setModalText(hint);
+                showModal(true);
+            })
+            .catch((err) => {
+                console.error("error in get question", err);
+            });
     };
 
     const handleOk = (e) => {
@@ -148,7 +170,7 @@ const Question = () => {
                     autoFocusButton="ok"
                     okType
                 >
-                    <p>Some contents...</p>
+                    <p>{modalText}</p>
                 </Modal>
             </Content>
         </Layout>
