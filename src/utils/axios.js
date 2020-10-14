@@ -1,7 +1,6 @@
+/* eslint-disable import/prefer-default-export */
 import axios from "axios";
 
-const BackendUrl = axios.create({
-    baseURl: "process.env.REACT_APP_BACKEND_URL",
+export const api = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_URL,
 });
-
-export default BackendUrl;

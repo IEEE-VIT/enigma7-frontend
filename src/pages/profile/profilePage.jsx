@@ -2,38 +2,33 @@ import React, { useState } from "react";
 import "./profile.css";
 import { Layout } from "antd";
 import { useHistory } from "react-router-dom";
-import Axios from "axios";
 import NavBar from "../../components/navbar/navbar";
 import Edit from "../../images/editIcon.png";
 import Save from "../../images/saveIcon.png";
 import useKeyPress from "../../hooks/useKeyPress";
+import { getUsername } from "../../utils/requests";
 
 const ProfilePage = () => {
     const [disableState, setDisableState] = useState(true);
+    const [user, setUser] = useState("");
+
     const history = useHistory();
     if (useKeyPress("Escape")) {
         history.push("/menu");
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const res = await getUsername(user);
+        if (res.error && user !== "") {
+            setUser("Username already exists");
+        }
+
         if (disableState === true) {
             setDisableState(false);
         } else if (disableState === false) {
             setDisableState(true);
         }
-    };
-    const setUsername = () => {
-        Axios.patch(
-            `${process.env.REACT_APP_BACKEND_URL}/users/me/edit`,
-            {
-                username: "",
-            },
-            {
-                headers: {
-                    Authorization: process.env.TOKEN,
-                },
-            }
-        );
     };
     return (
         <Layout className="page">
@@ -45,8 +40,11 @@ const ProfilePage = () => {
                         Name
                         <br />
                         <input
+                            value={user}
+                            onChange={(e) => {
+                                setUser(e.target.value);
+                            }}
                             type="text"
-                            value={setUsername}
                             className={
                                 disableState
                                     ? "input-default"

@@ -1,25 +1,13 @@
 import React from "react";
 import { Layout } from "antd";
 import { useHistory } from "react-router-dom";
-import Axios from "axios";
 import NavBar from "../../components/navbar/navbar";
 import "./leaderboard.css";
 import useKeyPress from "../../hooks/useKeyPress";
 
-const LeaderBoardPage = () => {
+const LeaderBoardPage = ({ leaders }) => {
+    const i = 1;
     const history = useHistory();
-    const getLeaders = async () => {
-        const leaders = await Axios.get(
-            `${process.env.REACT_APP_BACKEND_URL}/leaderboard`,
-            {
-                headers: {
-                    Authorization: process.env.TOKEN,
-                },
-            }
-        );
-        return leaders;
-    };
-
     if (useKeyPress("Escape")) {
         history.push("/menu");
     }
@@ -39,18 +27,17 @@ const LeaderBoardPage = () => {
                             </tr>
                         </thead>
                         <tbody className="leaderboard-body">
-                            {getLeaders.map((leader) => {
+                            {leaders.map((leader) => {
                                 return (
-                                    <tr
-                                        key={leader.id}
-                                        className="leaderboard-row"
-                                    >
-                                        <td className="col">{leader.rank}.</td>
+                                    <tr key={i} className="leaderboard-row">
+                                        <td className="col">{i}.</td>
                                         <td className="username col">
                                             {leader.username}
                                         </td>
-                                        <td className="col">{leader.solved}</td>
-                                        <td className="col">{leader.score}</td>
+                                        <td className="col">
+                                            {leader.question_answered}
+                                        </td>
+                                        <td className="col">{leader.points}</td>
                                     </tr>
                                 );
                             })}
