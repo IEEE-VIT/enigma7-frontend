@@ -22,7 +22,6 @@ const Question = () => {
     const [question, setQuestion] = useState("");
     const [img, setImg] = useState("");
     const [questionId, setQuestionId] = useState("");
-    const [hint, setHint] = useState("defauflt hint");
 
     const key = localStorage.getItem("key");
     console.log("key from local storage:>>", key);
@@ -54,16 +53,74 @@ const Question = () => {
         showModal(true);
     };
 
-    const selectPower1 = () => {
-        console.log("power1");
-        showModal(true);
+    const selectHintPower = () => {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/powerup/hint`, {
+            headers: {
+                Authorization: key,
+            },
+        })
+            .then((res) => {
+                const { data } = res;
+                console.log(data);
+                return data;
+            })
+            .then((data) => {
+                setModalText(data.detail);
+                showModal(true);
+            })
+            .catch((err) => {
+                console.error("error in get question", err);
+            });
     };
-    const selectPower2 = () => {
-        console.log("power2");
-        showModal(true);
+    const selectSkipPower = () => {
+        Axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/game/powerup/skip/`,
+            {},
+            {
+                headers: {
+                    Authorization: key,
+                },
+            }
+        )
+            .then((res) => {
+                const { data } = res;
+                console.log("Skip:>>", data);
+                return data;
+            })
+            .then((data) => {
+                const { status, detail } = data;
+                setModalText(`${status},${detail}`);
+                showModal(true);
+            })
+            .catch((err) => {
+                console.error("error in get question", err);
+            });
     };
-    const selectPower3 = () => {
-        console.log("power3");
+    const selectCloseAnsPower = () => {
+        console.log("close ans");
+
+        Axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/game/powerup/close-answer/`,
+            {},
+            {
+                headers: {
+                    Authorization: key,
+                },
+            }
+        )
+            .then((res) => {
+                const { data } = res;
+                console.log("Close Ans:>>", data);
+                return data;
+            })
+            .then((data) => {
+                const { status, detail } = data;
+                setModalText(`${status},${detail}`);
+                showModal(true);
+            })
+            .catch((err) => {
+                console.error("error in get question", err);
+            });
         showModal(true);
     };
     const onHintClick = () => {
@@ -79,8 +136,7 @@ const Question = () => {
                 return data;
             })
             .then((data) => {
-                setHint(data.hint);
-                setModalText(hint);
+                setModalText(data.hint);
                 showModal(true);
             })
             .catch((err) => {
@@ -116,21 +172,21 @@ const Question = () => {
                 <div className="question-header">
                     <div
                         className="question-powerup-box"
-                        onClick={selectPower1}
+                        onClick={selectHintPower}
                     >
-                        powerup
+                        hint
                     </div>
                     <div
                         className="question-powerup-box"
-                        onClick={selectPower2}
+                        onClick={selectSkipPower}
                     >
-                        powerup
+                        skip
                     </div>
                     <div
                         className="question-powerup-box"
-                        onClick={selectPower3}
+                        onClick={selectCloseAnsPower}
                     >
-                        powerup
+                        close ans
                     </div>
                 </div>
                 <div className="question-main">

@@ -13,7 +13,7 @@ import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
 const App = () => {
     localStorage.setItem(
         "key",
-        "token 30fba45c588ed7904a70da44cce083c54968ec5f"
+        "Token 30fba45c588ed7904a70da44cce083c54968ec5f"
     );
     return (
         <Layout
