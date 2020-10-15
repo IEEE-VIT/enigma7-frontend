@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -50,7 +51,33 @@ const Question = () => {
 
     const onAnswer = () => {
         console.log("Answer:", answer);
-        showModal(true);
+        Axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/game/answer/`,
+            {
+                answer,
+            },
+            {
+                headers: {
+                    Authorization: key,
+                },
+            }
+        )
+            .then((res) => {
+                const { data } = res;
+                console.log("answer:>>", data);
+                return data;
+            })
+            .then((data) => {
+                // eslint-disable-next-line no-shadow
+                const { answer, close_answer, detail } = data;
+                // eslint-disable-next-line camelcase
+                setModalText(`${answer},${close_answer}, ${detail}`);
+                console.log(data);
+                showModal(true);
+            })
+            .catch((err) => {
+                console.error("error in get question", err);
+            });
     };
 
     const selectHintPower = () => {
@@ -96,6 +123,7 @@ const Question = () => {
                 console.error("error in get question", err);
             });
     };
+
     const selectCloseAnsPower = () => {
         console.log("close ans");
 
