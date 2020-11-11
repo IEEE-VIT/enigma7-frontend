@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import ProfilePage from "./pages/profile/profilePage";
@@ -9,21 +9,8 @@ import TimerPage from "./pages/timer/TimerPage";
 import QuestionPage from "./pages/question/QuestionPage";
 import LoginPage from "./pages/login/LoginPage";
 import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
-import { getLeaderboard } from "./utils/requests";
 
 const App = () => {
-    const [leaderboard, setLeaderboard] = useState([]);
-
-    useEffect(() => {
-        const getData = async () => {
-            const res = await getLeaderboard();
-            setLeaderboard(res);
-            console.log(res);
-            console.log(leaderboard);
-        };
-        getData();
-    }, []);
-
     return (
         <Layout
             style={{
@@ -43,16 +30,9 @@ const App = () => {
                 <Route exact path="/menu">
                     <MainPage />
                 </Route>
-                <Route
-                    exact
-                    path="/leaderboard"
-                    render={() => {
-                        if (leaderboard.length > 0) {
-                            return <LeaderBoardPage leaders={leaderboard} />;
-                        }
-                        return null;
-                    }}
-                />
+                <Route exact path="/leaderboard">
+                    <LeaderBoardPage />
+                </Route>
 
                 <Route exact path="/Questions">
                     <QuestionPage />
@@ -60,9 +40,7 @@ const App = () => {
                 <Route exact path="/startNow">
                     <TimerPage />
                 </Route>
-                {/* <Route exact path="/login">
-                    <LoginPage/>
-                </Route> */}
+
                 <Route exact path="/firstLogin">
                     <FirstLoginPage />
                 </Route>
