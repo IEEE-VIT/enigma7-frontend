@@ -11,6 +11,10 @@ import LoginPage from "./pages/login/LoginPage";
 import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
 
 const App = () => {
+    localStorage.setItem(
+        "key",
+        "Token 30fba45c588ed7904a70da44cce083c54968ec5f"
+    );
     return (
         <Layout
             style={{

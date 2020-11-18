@@ -10,15 +10,17 @@ import useKeyPress from "../../hooks/useKeyPress";
 const Login = () => {
     const history = useHistory();
     const onSignUpWithGoogle = (response) => {
+
         console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
         console.log(response);
         console.log(response.code);
         console.log("backendurl:>>", process.env.REACT_APP_BACKEND_URL);
+
         Axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/users/auth/google`,
             {
                 code: response.code,
-                callback_url: "http://127.0.0.1:8000/",
+                callback_url: "http://127.0.0.1:3000/",
             },
             {
                 headers: {
@@ -29,6 +31,7 @@ const Login = () => {
             .then((res) => {
                 // eslint-disable-next-line no-unused-vars
                 const { key, username_exists } = res;
+                console.log(res);
                 if (username_exists) {
                     return history.push("/firstLogin");
                 }
@@ -70,7 +73,6 @@ const Login = () => {
                 <div className="login-btn-group">
                     <GoogleLogin
                         clientId={process.env.REACT_APP_CLIENT_ID}
-                        buttonText="Login"
                         onSuccess={onSignUpWithGoogle}
                         onFailure={() => console.log("faliure")}
                         cookiePolicy="single_host_origin"
