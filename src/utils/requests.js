@@ -2,9 +2,10 @@
 import { api } from "./axios";
 
 export const getLeaderboard = async () => {
+    console.log(process.env.REACT_APP_TOKEN);
     const res = await api.get("/game/leaderboard", {
         headers: {
-            Authorization: process.env.TOKEN,
+            Authorization: `Token ${process.env.REACT_APP_TOKEN}`,
         },
     });
     return res.data;
@@ -18,7 +19,7 @@ export const getUsername = async (userName) => {
         },
         {
             headers: {
-                Authorization: process.env.TOKEN,
+                Authorization: process.env.REACT_APP_TOKEN,
             },
         }
     );
