@@ -6,15 +6,24 @@ import NavBar from "../../components/navbar/navbar";
 import Edit from "../../images/editIcon.png";
 import Save from "../../images/saveIcon.png";
 import useKeyPress from "../../hooks/useKeyPress";
+import { getUsername } from "../../utils/requests";
 
 const ProfilePage = () => {
     const [disableState, setDisableState] = useState(true);
+    const [user, setUser] = useState("");
+
     const history = useHistory();
     if (useKeyPress("Escape")) {
         history.push("/menu");
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const res = await getUsername(user);
+        if (res.error && user !== "") {
+            setUser("Username already exists");
+        }
+
         if (disableState === true) {
             setDisableState(false);
         } else if (disableState === false) {
@@ -31,6 +40,10 @@ const ProfilePage = () => {
                         Name
                         <br />
                         <input
+                            value={user}
+                            onChange={(e) => {
+                                setUser(e.target.value);
+                            }}
                             type="text"
                             className={
                                 disableState

@@ -12,7 +12,7 @@ const MainPage = () => {
                     <img src={logo} alt="enigma.svg" />
                 </div>
                 <div className="buttons">
-                    <Buttons redirect="Questions" name="Questions" />
+                    <Buttons redirect="Questions" name="Questions" autofocus />
                     <Buttons redirect="profile" name="Profile" />
                     <Buttons redirect="story" name="Story" />
                     <Buttons redirect="leaderboard" name="Leaderboard" />

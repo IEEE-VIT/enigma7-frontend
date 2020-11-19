@@ -10,8 +10,12 @@ import useKeyPress from "../../hooks/useKeyPress";
 const Login = () => {
     const history = useHistory();
     const onSignUpWithGoogle = (response) => {
+
+        console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
         console.log(response);
-        // token 30fba45c588ed7904a70da44cce083c54968ec5f
+        console.log(response.code);
+        console.log("backendurl:>>", process.env.REACT_APP_BACKEND_URL);
+
         Axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/users/auth/google`,
             {

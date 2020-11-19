@@ -10,6 +10,7 @@
         "antd": "^4.5.4",
         "axios": "^0.20.0",
         "craco-less": "^1.17.0",
+        "dotenv": "^8.2.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-google-login": "^5.1.21",

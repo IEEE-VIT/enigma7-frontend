@@ -25,15 +25,32 @@ const App = () => {
             }}
         >
             <Switch>
-                <Route exact path="/profile" component={ProfilePage} />
-                <Route exact path="/story" component={StoryPage} />
-                <Route exact path="/menu" component={MainPage} />
-                <Route exact path="/leaderboard" component={LeaderBoardPage} />
-                <Route exact path="/Questions" component={QuestionPage} />
-                <Route exact path="/startNow" component={TimerPage} />
-                {/* <Route exact path="/login" component={LoginPage} /> */}
-                <Route exact path="/firstLogin" component={FirstLoginPage} />
-                <Route exact path="/" component={LoginPage} />
+                <Route exact path="/profile">
+                    <ProfilePage />
+                </Route>
+                <Route exact path="/story">
+                    <StoryPage />
+                </Route>
+                <Route exact path="/menu">
+                    <MainPage />
+                </Route>
+                <Route exact path="/leaderboard">
+                    <LeaderBoardPage />
+                </Route>
+
+                <Route exact path="/Questions">
+                    <QuestionPage />
+                </Route>
+                <Route exact path="/startNow">
+                    <TimerPage />
+                </Route>
+
+                <Route exact path="/firstLogin">
+                    <FirstLoginPage />
+                </Route>
+                <Route exact path="/">
+                    <LoginPage />
+                </Route>
             </Switch>
         </Layout>
     );
