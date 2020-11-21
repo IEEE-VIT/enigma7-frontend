@@ -1,6 +1,6 @@
 {
-    "short_name": "My React App",
-    "name": "My template react app",
+    "short_name": "ENIGMA 7.0",
+    "name": "ENIGMA 7.0",
     "icons": [
         {
             "src": "favicon.ico",
@@ -20,6 +20,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#1DB818",
+    "background_color": "#080E08"
 }

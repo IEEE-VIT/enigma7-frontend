@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./login.css";
 import { Typography, Button } from "antd";
 import { useHistory } from "react-router-dom";
@@ -9,47 +9,35 @@ import useKeyPress from "../../hooks/useKeyPress";
 
 const Login = () => {
     const history = useHistory();
+
+    const [loading, setLoading] = useState(false);
+
     const onSignUpWithGoogle = (response) => {
-
-        console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
-        console.log(response);
-        console.log(response.code);
-        console.log("backendurl:>>", process.env.REACT_APP_BACKEND_URL);
-
-        Axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/users/auth/google`,
-            {
-                code: response.code,
-                callback_url: "http://127.0.0.1:3000/",
-            },
-            {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                },
-            }
-        )
+        setLoading(true);
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/google/`, {
+            access_token: response.accessToken,
+        })
             .then((res) => {
-                // eslint-disable-next-line no-unused-vars
-                const { key, username_exists } = res;
-                console.log(res);
-                if (username_exists) {
-                    return history.push("/firstLogin");
-                }
-                return history.push("/menu");
+                const { data } = res;
+                console.log(res.data);
+
+                return data;
+            })
+            .then((data) => {
+                const { key } = data;
+                localStorage.setItem("key", `token ${key}`);
+                setLoading(false);
+                return history.push("/startNow");
             })
             .catch((e) => {
                 console.error("google Auth own backend error", e);
             });
     };
-    const googleBtn = useRef(null);
-    const appleBtn = useRef(null);
 
-    // useEffect(() => {
-    //     googleBtn.current.focus();
-    // }, []);
+    const googleBtn = useRef(null);
 
     if (useKeyPress("ArrowDown")) {
-        appleBtn.current.focus();
+        googleBtn.current.focus();
     }
 
     if (useKeyPress("ArrowUp")) {
@@ -72,33 +60,26 @@ const Login = () => {
             <div className="login-bottom">
                 <div className="login-btn-group">
                     <GoogleLogin
-                        clientId={process.env.REACT_APP_CLIENT_ID}
+                        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         onSuccess={onSignUpWithGoogle}
                         onFailure={() => console.log("faliure")}
                         cookiePolicy="single_host_origin"
-                        responseType="code"
+                        // responseType="code"
+                        redirectUri={process.env.REACT_APP_GOOGLE_REDIRECT_URL}
                         render={(renderProps) => (
                             <Button
                                 onClick={renderProps.onClick}
-                                disabled={renderProps.disabled}
+                                // disabled={renderProps.disabled}
                                 className="login-btn"
                                 type="primary"
                                 ref={googleBtn}
                                 autofocus
+                                loading={loading}
                             >
                                 Sign up with Google
                             </Button>
                         )}
                     />
-
-                    <Button
-                        onClick={() => "apple login"}
-                        className="login-btn"
-                        type="primary"
-                        ref={appleBtn}
-                    >
-                        Sign up with Apple
-                    </Button>
                 </div>
                 <div className="login-footer">
                     Use ARROW to navigate | Press ENTER to continue

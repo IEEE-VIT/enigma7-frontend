@@ -25,6 +25,7 @@ function useKeyPress(key) {
             window.removeEventListener("keydown", onDown);
             window.removeEventListener("keyup", onUp);
         };
+        // eslint-disable-next-line
     }, [key]);
 
     return pressed;

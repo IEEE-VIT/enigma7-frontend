@@ -26,6 +26,14 @@ body {
     overflow-y: hidden;
 }
 
+.ant-notification-notice-closable .ant-notification-notice-message {
+    color: #26df21;
+}
+
+.ant-notification-notice-close {
+    color: #26df21;
+}
+
 @media only screen and (max-width: 330px) {
     .page {
         height: 94vh;
