@@ -13,6 +13,13 @@
     font-size: 27px;
     line-height: 45px;
 }
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .ant-statistic {
     display: flex;
     flex-direction: column;

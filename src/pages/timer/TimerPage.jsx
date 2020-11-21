@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from "react";
-import { Statistic } from "antd";
+import { Button, Statistic } from "antd";
 import "./timer.css";
 import { useHistory } from "react-router-dom";
 import useKeyPress from "../../hooks/useKeyPress";
@@ -17,15 +17,21 @@ const Timer = () => {
         setDeadline(1607098800000);
     }, []);
     if (useKeyPress("Enter") && startNow) {
-        console.log("done");
+        // console.log("done");
         history.push("/menu");
     }
     const onFinish = () => {
-        console.log("finished!");
+        // console.log("finished!");
         setStartNow(true);
     };
 
-    console.log(deadline);
+    const onLogout = () => {
+        // console.log("You have logged out");
+        localStorage.clear();
+        history.push("/");
+    };
+
+    // console.log(deadline);
     return (
         <div className="timer-page page">
             <div className="timer-heading">
@@ -38,7 +44,13 @@ const Timer = () => {
                 onFinish={onFinish}
             />
             {!startNow ? (
-                <div> </div>
+                <Button
+                    onClick={onLogout}
+                    type="primary"
+                    className="logout-btn login-btn"
+                >
+                    Logout
+                </Button>
             ) : (
                 <div>
                     <div

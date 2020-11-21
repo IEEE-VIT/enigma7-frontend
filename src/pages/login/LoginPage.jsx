@@ -19,7 +19,7 @@ const Login = () => {
         })
             .then((res) => {
                 const { data } = res;
-                console.log(res.data);
+                // console.log(res.data);
 
                 return data;
             })

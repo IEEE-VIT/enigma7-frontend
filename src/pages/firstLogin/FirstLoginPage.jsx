@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+/* eslint-disable camelcase */
+import React, { useEffect, useState } from "react";
 import { Button, Input, Radio, Select } from "antd";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
 
 import "./firstLogin.css";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const { Option } = Select;
 
@@ -16,8 +18,30 @@ const FirstLogin = () => {
     const [outreach, setOutreach] = useState("false");
     const [year, setYear] = useState("");
     const [loading, setLoading] = useState(false);
+    const [loadingPage, setLoadingPage] = useState(true);
 
     const history = useHistory();
+
+    useEffect(() => {
+        const key = localStorage.getItem("key");
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/exists/`, {
+            headers: {
+                Authorization: key,
+            },
+        })
+            .then((res) => {
+                // console.log(res.data);
+                const { username_exists } = res.data;
+                if (username_exists) {
+                    history.push("startNow");
+                }
+                setLoadingPage(false);
+            })
+            .catch((err) => {
+                console.error("error getting username", err);
+            });
+        // eslint-disable-next-line
+    }, []);
     // const onFinish = (values) => {
     //     console.log(values);
     //     setError("error 404! no backend found");
@@ -30,7 +54,7 @@ const FirstLogin = () => {
 
     const onFinish = async () => {
         const key = localStorage.getItem("key");
-        console.log(username, collegeStudent, year, outreach);
+        // console.log(username, collegeStudent, year, outreach);
         if (!username || !collegeStudent || !year || !outreach) {
             setError("Enter the required values");
         }
@@ -46,8 +70,8 @@ const FirstLogin = () => {
                 },
             }
         )
-            .then((res) => {
-                console.log(res.data);
+            .then(() => {
+                // console.log(res.data);
                 setLoading(false);
             })
             .then(() => {
@@ -65,7 +89,7 @@ const FirstLogin = () => {
                     }
                 )
                     .then(() => {
-                        console.log("?startnow");
+                        // console.log("?startnow");
                         history.push("/startNow");
                     })
                     .catch((err) => {
@@ -78,9 +102,13 @@ const FirstLogin = () => {
     };
 
     if (useKeyPress("Enter")) {
-        console.log("done");
+        // console.log("done");
         onFinish();
         // history.push("/startNow");
+    }
+
+    if (loadingPage) {
+        return <LoadingPage />;
     }
 
     return (
