@@ -5,6 +5,7 @@ import TimerPage from "./pages/timer/TimerPage";
 import LoginPage from "./pages/login/LoginPage";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import FirstLogin from "./pages/firstLogin/FirstLoginPage";
+import NotFound from "./pages/notFound/NotFound";
 
 const App = () => {
     return (
@@ -30,6 +31,7 @@ const App = () => {
                     component={FirstLogin}
                     redirect="/"
                 />
+                <Route component={NotFound} />
             </Switch>
         </Layout>
     );

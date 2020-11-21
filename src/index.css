@@ -8,6 +8,10 @@
     box-sizing: bborder-box;
 }
 
+html {
+    cursor: url("./images/cursor.svg"), auto;
+}
+
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -24,14 +28,6 @@ body {
     width: 100vw;
     display: flex;
     overflow-y: hidden;
-}
-
-.ant-notification-notice-closable .ant-notification-notice-message {
-    color: #26df21;
-}
-
-.ant-notification-notice-close {
-    color: #26df21;
 }
 
 /* @media only screen and (max-width: 330px) {

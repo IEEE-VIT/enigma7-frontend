@@ -85,6 +85,7 @@
     font-size: 20px;
     line-height: 21px;
     color: #26df21;
+    cursor: url("../../images/cursor.svg"), auto;
 }
 
 .login-btn:hover {

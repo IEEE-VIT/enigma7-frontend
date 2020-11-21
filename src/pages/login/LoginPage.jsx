@@ -33,7 +33,7 @@ const Login = () => {
                 return history.push("/startNow");
             })
             .catch((e) => {
-                console.error("google Auth own backend error", e);
+                console.error("Auth backend error", e);
             });
     };
 

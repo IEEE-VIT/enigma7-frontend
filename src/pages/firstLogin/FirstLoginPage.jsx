@@ -14,11 +14,11 @@ const FirstLogin = () => {
     const [error, setError] = useState();
     const [footer] = useState("Press ENTER to continue");
     const [username, setUsername] = useState("false");
-    const [collegeStudent, setCollegeStudent] = useState("false");
-    const [outreach, setOutreach] = useState("false");
-    const [year, setYear] = useState("");
+    const [collegeStudent, setCollegeStudent] = useState(false);
+    const [outreach, setOutreach] = useState();
+    const [year, setYear] = useState();
     const [loading, setLoading] = useState(false);
-    const [loadingPage, setLoadingPage] = useState(true);
+    const [loadingPage, setLoadingPage] = useState(false);
 
     const history = useHistory();
 
@@ -54,11 +54,15 @@ const FirstLogin = () => {
     //     // history.push("/startNow");
     // }
 
+    // eslint-disable-next-line consistent-return
     const onFinish = async () => {
         const key = localStorage.getItem("key");
-        // console.log(username, collegeStudent, year, outreach);
-        if (!username || !collegeStudent || !year || !outreach) {
-            setError("Enter the required values");
+        console.log(username, collegeStudent, year, outreach);
+        if (!username || !outreach) {
+            return setError("Enter the required values");
+        }
+        if (collegeStudent && !year) {
+            return setError("Enter the required values");
         }
         setLoading(true);
         Axios.patch(
@@ -72,10 +76,6 @@ const FirstLogin = () => {
                 },
             }
         )
-            .then(() => {
-                // console.log(res.data);
-                setLoading(false);
-            })
             .then(() => {
                 Axios.post(
                     `${process.env.REACT_APP_BACKEND_URL}/users/outreach/`,
@@ -92,14 +92,15 @@ const FirstLogin = () => {
                 )
                     .then(() => {
                         // console.log("?startnow");
-                        history.push("/startNow");
+                        setLoading(false);
+                        return history.push("/startNow");
                     })
                     .catch((err) => {
-                        console.error("error sending first login", err);
+                        return console.error("Error in first login", err);
                     });
             })
             .catch((err) => {
-                console.error("error sending username", err);
+                return console.error("error sending username", err);
             });
     };
 
@@ -134,7 +135,6 @@ const FirstLogin = () => {
                     </div>
                     <br />
                     <Select
-                        defaultValue="Word of mouth"
                         style={{ width: 200 }}
                         onChange={(value) => setOutreach(value)}
                     >
@@ -157,29 +157,34 @@ const FirstLogin = () => {
                         style={{ margin: "1rem" }}
                         onChange={(e) => setCollegeStudent(e.target.value)}
                     >
-                        <Radio.Button value="true">Yes</Radio.Button>
-                        <Radio.Button value="false">No</Radio.Button>
+                        <Radio.Button value>Yes</Radio.Button>
+                        <Radio.Button value={false}>No</Radio.Button>
                     </Radio.Group>
                     <br />
                     <br />
-                    <div className="first-login-question">
-                        Which year do you study in?
-                    </div>
-                    <br />
-                    <Select
-                        onChange={(value) => setYear(value)}
-                        style={{
-                            width: 200,
-                            backgroundColor: "#182f24",
-                            color: "white",
-                        }}
-                    >
-                        <Option value="2020">2020</Option>
-                        <Option value="2021">2021</Option>
-                        <Option value="2022">2022</Option>
-                        <Option value="2023">2023</Option>
-                        <Option value="2024">2024</Option>
-                    </Select>
+
+                    {!collegeStudent ? null : (
+                        <div className="first-login-year">
+                            <div className="first-login-question">
+                                Which year will you graduate in?
+                            </div>
+                            <br />
+                            <Select
+                                onChange={(value) => setYear(value)}
+                                style={{
+                                    width: 200,
+                                    backgroundColor: "#182f24",
+                                    color: "white",
+                                }}
+                            >
+                                <Option value="2020">2020</Option>
+                                <Option value="2021">2021</Option>
+                                <Option value="2022">2022</Option>
+                                <Option value="2023">2023</Option>
+                                <Option value="2024">2024</Option>
+                            </Select>
+                        </div>
+                    )}
                     <br />
                     <br />
 

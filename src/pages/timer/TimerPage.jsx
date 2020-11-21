@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Statistic } from "antd";
 import "./timer.css";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 import useKeyPress from "../../hooks/useKeyPress";
 
 const { Countdown } = Statistic;
@@ -14,7 +15,7 @@ const Timer = () => {
     const [deadline, setDeadline] = useState(false);
 
     useEffect(() => {
-        setDeadline(1607098800000);
+        setDeadline(moment("2020-12-04-16-20", "YYYY-MM-DD-hh-mm"));
     }, []);
     if (useKeyPress("Enter") && startNow) {
         // console.log("done");
