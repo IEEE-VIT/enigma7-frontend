@@ -117,7 +117,7 @@ const FirstLogin = () => {
                 <div className="first-login-heading">Profile setup</div>
                 <div className="first-login-content">
                     <div className="first-login-question">
-                        How you want to be know as?
+                        Choose a username
                         <br /> [this can’t be edited later]
                     </div>
                     <Input
@@ -166,8 +166,11 @@ const FirstLogin = () => {
                     <br />
                     <Select
                         onChange={(value) => setYear(value)}
-                        style={{ width: 200, backgroundColor: "#182f24" }}
-                        dropdownStyle={{ backgroundColor: "#182f24" }}
+                        style={{
+                            width: 200,
+                            backgroundColor: "#182f24",
+                            color: "white",
+                        }}
                     >
                         <Option value="2020">2020</Option>
                         <Option value="2021">2021</Option>
