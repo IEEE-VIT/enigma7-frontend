@@ -1,0 +1,92 @@
+.first-login {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+    justify-content: space-between;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.first-login::-webkit-scrollbar {
+    display: none;
+}
+
+.first-login {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.first-login-heading {
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    line-height: 35px;
+}
+
+.first-login-content {
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.first-login-question {
+    text-align: left;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+    color: #1db818;
+}
+
+.first-login-input {
+    display: flex;
+    justify-self: left;
+    height: 3rem;
+    max-width: 375px;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 27px;
+    margin: 2rem 0;
+    background-color: #182f24;
+    color: #1db818;
+    border: none !important;
+    outline: none !important;
+}
+
+.first-login-input:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+.first-login-footer {
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.align-input-left {
+    justify-content: center;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: #182f24;
+    color: #1db818;
+    border: none !important;
+    outline: none !important;
+}
+
+.ant-radio-button-wrapper {
+    background-color: #182f24;
+    color: #1db818;
+    border: none !important;
+    outline: none !important;
+}

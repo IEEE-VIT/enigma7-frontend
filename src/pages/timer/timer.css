@@ -11,7 +11,7 @@
 
 .timer-heading {
     font-size: 27px;
-    line-height: 35px;
+    line-height: 45px;
 }
 .ant-statistic {
     display: flex;
@@ -49,9 +49,14 @@
 }
 
 @media only screen and (max-width: 670px) {
-    .timer-page {
+    /* .timer-page {
         height: 90vh;
         width: 90vw;
         margin: 1.7rem;
+    } */
+
+    .timer-heading {
+        font-size: 20px;
+        line-height: 35px;
     }
 }

@@ -24,9 +24,12 @@ const Login = () => {
                 return data;
             })
             .then((data) => {
-                const { key } = data;
+                const { key, username_exists } = data;
                 localStorage.setItem("key", `token ${key}`);
                 setLoading(false);
+                if (!username_exists) {
+                    return history.push("/firstLogin");
+                }
                 return history.push("/startNow");
             })
             .catch((e) => {
@@ -76,13 +79,10 @@ const Login = () => {
                                 autofocus
                                 loading={loading}
                             >
-                                Sign up with Google
+                                Continue with Google
                             </Button>
                         )}
                     />
-                </div>
-                <div className="login-footer">
-                    Use ARROW to navigate | Press ENTER to continue
                 </div>
             </div>
         </div>

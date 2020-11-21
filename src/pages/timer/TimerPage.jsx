@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from "react";
-import { Statistic, notification } from "antd";
+import { Statistic } from "antd";
 import "./timer.css";
 import { useHistory } from "react-router-dom";
 import useKeyPress from "../../hooks/useKeyPress";
@@ -13,23 +13,7 @@ const Timer = () => {
     const [startNow, setStartNow] = useState(false);
     const [deadline, setDeadline] = useState(false);
 
-    const openNotification = () => {
-        notification.open({
-            message: "Congratulations!",
-            description: "You have succesfully registered for Enigma7.0",
-            duration: 0,
-            onClick: () => {
-                console.log("Notification Clicked!");
-            },
-            style: {
-                background: "#0D1811",
-                color: "#26DF21",
-            },
-        });
-    };
-
     useEffect(() => {
-        openNotification();
         setDeadline(1607098800000);
     }, []);
     if (useKeyPress("Enter") && startNow) {
@@ -45,6 +29,7 @@ const Timer = () => {
     return (
         <div className="timer-page page">
             <div className="timer-heading">
+                You have succesfully registered for Enigma 7.0 <br />
                 The ultimate cryptic hunt starts in
             </div>
             <Countdown
