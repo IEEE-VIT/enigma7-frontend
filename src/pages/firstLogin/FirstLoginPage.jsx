@@ -93,13 +93,19 @@ const FirstLogin = () => {
                     .then(() => {
                         // console.log("?startnow");
                         setLoading(false);
-                        return history.push("/startNow");
+                        return history.push("/start-now");
                     })
                     .catch((err) => {
+                        setError(
+                            "Please make sure the details are appropriate"
+                        );
+                        setLoading(false);
                         return console.error("Error in first login", err);
                     });
             })
             .catch((err) => {
+                setLoading(false);
+                setError("Please make sure the details are appropriate");
                 return console.error("error sending username", err);
             });
     };
@@ -107,7 +113,7 @@ const FirstLogin = () => {
     if (useKeyPress("Enter")) {
         // console.log("done");
         onFinish();
-        // history.push("/startNow");
+        // history.push("/start-now");
     }
 
     if (loadingPage) {

@@ -28,9 +28,9 @@ const Login = () => {
                 localStorage.setItem("key", `token ${key}`);
                 setLoading(false);
                 if (!username_exists) {
-                    return history.push("/firstLogin");
+                    return history.push("/first-login");
                 }
-                return history.push("/startNow");
+                return history.push("/start-now");
             })
             .catch((e) => {
                 console.error("Auth backend error", e);

@@ -21,13 +21,13 @@ const App = () => {
                 <Route exact path="/" component={LoginPage} />
                 <ProtectedRoute
                     exact
-                    path="/startNow"
+                    path="/start-now"
                     component={TimerPage}
                     redirect="/"
                 />
                 <ProtectedRoute
                     exact
-                    path="/firstLogin"
+                    path="/first-login"
                     component={FirstLogin}
                     redirect="/"
                 />
