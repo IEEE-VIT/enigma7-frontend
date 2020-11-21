@@ -205,10 +205,13 @@ const FirstLogin = () => {
                     </Button>
 
                     {error ? (
-                        <div className="first-login-question">
+                        <div
+                            style={{ color: "#F50C0C" }}
+                            className="first-login-question"
+                        >
                             ________________
                             <br />
-                            InvalidUsername. <br /> -&gt; {error}!
+                            Invalid Entries. <br /> -&gt; {error}!
                         </div>
                     ) : null}
                 </div>
