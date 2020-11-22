@@ -58,7 +58,16 @@ const Login = () => {
             <div className="login-header">
                 <div className="login-nav">
                     <span className="login-nav-text">
-                        Organised by <u>IEEE VIT</u>. Reach out to us at
+                        Organised by{" "}
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cursor"
+                            href="https://ieeevit.org/"
+                        >
+                            <u>IEEE VIT</u>
+                        </a>
+                        . Reach out to us at
                     </span>
                     &nbsp;
                     <span>
