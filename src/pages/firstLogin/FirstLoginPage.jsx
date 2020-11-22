@@ -129,12 +129,17 @@ const FirstLogin = () => {
                         Choose a username
                         <br /> [this can’t be edited later]
                     </div>
+                    <br />{" "}
+                    <span style={{ marginTop: 0 }}>
+                        [Special characters are not allowed]
+                    </span>
                     <Input
                         autoComplete="off"
                         className="first-login-input question-input"
                         onChange={(e) => {
                             setUsername(e.target.value);
                         }}
+                        style={{ marginTop: 0 }}
                     />
                     <div className="first-login-question">
                         Where did you hear about us?
@@ -168,7 +173,6 @@ const FirstLogin = () => {
                     </Radio.Group>
                     <br />
                     <br />
-
                     {!collegeStudent ? null : (
                         <div className="first-login-year">
                             <div className="first-login-question">
@@ -193,7 +197,6 @@ const FirstLogin = () => {
                     )}
                     <br />
                     <br />
-
                     <Button
                         onClick={onFinish}
                         type="primary"
@@ -203,7 +206,6 @@ const FirstLogin = () => {
                     >
                         Submit
                     </Button>
-
                     {error ? (
                         <div
                             style={{ color: "#F50C0C" }}

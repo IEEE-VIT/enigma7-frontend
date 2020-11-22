@@ -6,6 +6,12 @@ import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
+import facebook from "../../images/facebook.svg";
+import linkedin from "../../images/LinkedIn.svg";
+import twitter from "../../images/Twitter.svg";
+import mail from "../../images/Mail.svg";
+import instagram from "../../images/instagram.svg";
+import github from "../../images/GitHub.svg";
 
 const Login = () => {
     const history = useHistory();
@@ -50,8 +56,93 @@ const Login = () => {
     return (
         <div className="login-page page">
             <div className="login-header">
+                <div className="login-nav">
+                    <span className="login-nav-text">
+                        Organised by <u>IEEE VIT</u>. Reach out to us at
+                    </span>
+                    &nbsp;
+                    <span>
+                        <span className="login-nav-icon">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="cursor"
+                                href="https://www.instagram.com/ieeevitvellore/?hl=en"
+                            >
+                                <img src={instagram} alt="" />
+                            </a>
+                        </span>
+                        <span className="login-nav-icon">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="cursor"
+                                href="https://twitter.com/ieeevitvellore"
+                            >
+                                <img src={twitter} alt="" />
+                            </a>
+                        </span>
+                        <span className="login-nav-icon">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="cursor"
+                                href="https://www.facebook.com/IEEEVIT/"
+                            >
+                                <img src={facebook} alt="" />
+                            </a>
+                        </span>
+                        <span className="login-nav-icon">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="cursor"
+                                href="https://www.linkedin.com/company/ieee-vit-vellore/"
+                            >
+                                <img src={linkedin} alt="" />
+                            </a>
+                        </span>
+                        <span className="login-nav-icon">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="cursor"
+                                href="https://github.com/ieee-vit"
+                            >
+                                <img src={github} alt="" />
+                            </a>
+                        </span>
+                        <span className="login-nav-icon">
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="cursor"
+                                href="mailto:contact@ieeevit.org"
+                            >
+                                <img src={mail} alt="" />
+                            </a>
+                        </span>
+                    </span>
+                </div>
                 <div className="login-header-background">
-                    100101001010100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100
+                    01000001 01110000 01110000 01110010 01100101 01100011
+                    01101001 01100001 01110100 01100101 00100000 01111001
+                    01101111 01110101 01110010 00100000 01100011 01110101
+                    01110010 01101001 01101111 01110011 01101001 01110100
+                    01111001 00101110 00100000 01001110 01101111 01110100
+                    00100000 01100001 01101100 01101100 00100000 01110000
+                    01101100 01100001 01100011 01100101 01110011 00100000
+                    01110111 01101001 01101100 01101100 00100000 01100111
+                    01110101 01101001 01100100 01100101 00100000 01111001
+                    01101111 01110101 00100000 01110100 01101111 00100000
+                    01110100 01101000 01100101 00100000 01100101 01101110
+                    01100100 00100000 01100010 01110101 01110100 00100000
+                    01110011 01101111 01101101 01100101 00100000 01100100
+                    01101111 00101110 00100000 01000001 01101100 01110111
+                    01100001 01111001 01110011 00100000 01101100 01101111
+                    01101111 01101011 00100000 01101111 01110101 01110100
+                    00100000 01100110 01101111 01110010 00100000 01100011
+                    01101100 01110101 01100101 01110011 01110011 01110011
                 </div>
                 <div className="login-heading">
                     <Typography className="login-title">ENIGMA</Typography>
@@ -73,7 +164,7 @@ const Login = () => {
                             <Button
                                 onClick={renderProps.onClick}
                                 // disabled={renderProps.disabled}
-                                className="login-btn"
+                                className="login-btn google-btn"
                                 type="primary"
                                 ref={googleBtn}
                                 autofocus
