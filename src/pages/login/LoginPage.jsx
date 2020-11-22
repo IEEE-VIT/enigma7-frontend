@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./login.css";
 import { Typography, Button } from "antd";
 import { useHistory } from "react-router-dom";
@@ -12,6 +12,16 @@ const Login = () => {
     const history = useHistory();
 
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const key = localStorage.getItem("key");
+
+        if (key) {
+            history.push("start-now");
+        }
+
+        // eslint-disable-next-line
+    }, []);
 
     const onSignUpWithGoogle = (response) => {
         setLoading(true);
