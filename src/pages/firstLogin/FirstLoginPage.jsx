@@ -18,7 +18,7 @@ const FirstLogin = () => {
     const [outreach, setOutreach] = useState();
     const [year, setYear] = useState();
     const [loading, setLoading] = useState(false);
-    const [loadingPage, setLoadingPage] = useState(false);
+    const [loadingPage, setLoadingPage] = useState(true);
 
     const history = useHistory();
 
@@ -33,7 +33,7 @@ const FirstLogin = () => {
                 // console.log(res.data);
                 const { username_exists } = res.data;
                 if (username_exists) {
-                    history.push("startNow");
+                    history.push("start-now");
                 }
                 setLoadingPage(false);
             })

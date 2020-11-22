@@ -71,6 +71,7 @@
     font-weight: normal;
     font-size: 20px;
     line-height: 26px;
+    display: flex;
 }
 
 .first-login-year {
@@ -92,4 +93,10 @@
     color: #1db818;
     border: none !important;
     outline: none !important;
+}
+
+@media only screen and (max-width: 670px) {
+    .first-login-footer {
+        display: none;
+    }
 }
