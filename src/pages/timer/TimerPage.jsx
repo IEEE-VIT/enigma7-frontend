@@ -6,6 +6,7 @@ import "./timer.css";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 import useKeyPress from "../../hooks/useKeyPress";
+import LoginNav from "../../components/loginNav/LoginNav";
 
 const { Countdown } = Statistic;
 
@@ -34,35 +35,40 @@ const Timer = () => {
 
     // console.log(deadline);
     return (
-        <div className="timer-page page">
-            <div className="timer-heading">
-                You have succesfully registered for Enigma 7.0 <br />
-                The ultimate cryptic hunt starts in
-            </div>
-            <Countdown
-                format="DD:HH:mm:ss"
-                value={deadline}
-                onFinish={onFinish}
-            />
-            {!startNow ? (
-                <Button
-                    onClick={onLogout}
-                    type="primary"
-                    className="logout-btn login-btn"
-                >
-                    Logout
-                </Button>
-            ) : (
-                <div>
-                    <div
-                        className="timer-start-now"
-                        onClick={() => history.push("/menu")}
-                    >
-                        START NOW
-                    </div>
-                    <div className="timer-footer">Press ENTER to continue</div>
+        <div className="timer-page-full page">
+            <LoginNav />
+            <div className="timer-page">
+                <div className="timer-heading">
+                    You have succesfully registered for Enigma 7.0 <br />
+                    The ultimate cryptic hunt starts in
                 </div>
-            )}
+                <Countdown
+                    format="DD:HH:mm:ss"
+                    value={deadline}
+                    onFinish={onFinish}
+                />
+                {!startNow ? (
+                    <Button
+                        onClick={onLogout}
+                        type="primary"
+                        className="logout-btn login-btn"
+                    >
+                        Logout
+                    </Button>
+                ) : (
+                    <div>
+                        <div
+                            className="timer-start-now"
+                            onClick={() => history.push("/menu")}
+                        >
+                            START NOW
+                        </div>
+                        <div className="timer-footer">
+                            Press ENTER to continue
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

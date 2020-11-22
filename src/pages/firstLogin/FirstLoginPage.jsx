@@ -57,7 +57,7 @@ const FirstLogin = () => {
     // eslint-disable-next-line consistent-return
     const onFinish = async () => {
         const key = localStorage.getItem("key");
-        console.log(username, collegeStudent, year, outreach);
+        // console.log(username, collegeStudent, year, outreach);
         if (!username || !outreach) {
             return setError("Enter the required values");
         }

@@ -6,12 +6,7 @@ import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
-import facebook from "../../images/facebook.svg";
-import linkedin from "../../images/LinkedIn.svg";
-import twitter from "../../images/Twitter.svg";
-import mail from "../../images/Mail.svg";
-import instagram from "../../images/instagram.svg";
-import github from "../../images/GitHub.svg";
+import LoginNav from "../../components/loginNav/LoginNav";
 
 const Login = () => {
     const history = useHistory();
@@ -56,83 +51,7 @@ const Login = () => {
     return (
         <div className="login-page page">
             <div className="login-header">
-                <div className="login-nav">
-                    <span className="login-nav-text">
-                        Organised by{" "}
-                        <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cursor"
-                            href="https://ieeevit.org/"
-                        >
-                            <u>IEEE VIT</u>
-                        </a>
-                        . Reach out to us at
-                    </span>
-                    &nbsp;
-                    <span>
-                        <span className="login-nav-icon">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="cursor"
-                                href="https://www.instagram.com/ieeevitvellore/?hl=en"
-                            >
-                                <img src={instagram} alt="" />
-                            </a>
-                        </span>
-                        <span className="login-nav-icon">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="cursor"
-                                href="https://twitter.com/ieeevitvellore"
-                            >
-                                <img src={twitter} alt="" />
-                            </a>
-                        </span>
-                        <span className="login-nav-icon">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="cursor"
-                                href="https://www.facebook.com/IEEEVIT/"
-                            >
-                                <img src={facebook} alt="" />
-                            </a>
-                        </span>
-                        <span className="login-nav-icon">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="cursor"
-                                href="https://www.linkedin.com/company/ieee-vit-vellore/"
-                            >
-                                <img src={linkedin} alt="" />
-                            </a>
-                        </span>
-                        <span className="login-nav-icon">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="cursor"
-                                href="https://github.com/ieee-vit"
-                            >
-                                <img src={github} alt="" />
-                            </a>
-                        </span>
-                        <span className="login-nav-icon">
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="cursor"
-                                href="mailto:contact@ieeevit.org"
-                            >
-                                <img src={mail} alt="" />
-                            </a>
-                        </span>
-                    </span>
-                </div>
+                <LoginNav />
                 <div className="login-header-background">
                     01000001 01110000 01110000 01110010 01100101 01100011
                     01101001 01100001 01110100 01100101 00100000 01111001
@@ -165,7 +84,7 @@ const Login = () => {
                     <GoogleLogin
                         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         onSuccess={onSignUpWithGoogle}
-                        onFailure={() => console.log("faliure")}
+                        onFailure={() => console.error("Are you offline?")}
                         cookiePolicy="single_host_origin"
                         // responseType="code"
                         redirectUri={process.env.REACT_APP_GOOGLE_REDIRECT_URL}

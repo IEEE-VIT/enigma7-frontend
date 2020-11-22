@@ -5,8 +5,13 @@
     align-items: center;
     padding: 0 1rem;
     text-align: center;
+    height: 80vh;
     /* align-self: center;
     justify-self: center; */
+}
+
+.timer-page-full {
+    flex-direction: column;
 }
 
 .timer-heading {
