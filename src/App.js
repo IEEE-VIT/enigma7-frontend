@@ -6,6 +6,7 @@ import LoginPage from "./pages/login/LoginPage";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import FirstLogin from "./pages/firstLogin/FirstLoginPage";
 import NotFound from "./pages/notFound/NotFound";
+import Privacy from "./pages/privacy/Privacy";
 
 const App = () => {
     return (
@@ -31,6 +32,7 @@ const App = () => {
                     component={FirstLogin}
                     redirect="/"
                 />
+                <Route path="/privacy" exact component={Privacy} />
                 <Route component={NotFound} />
             </Switch>
         </Layout>
