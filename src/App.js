@@ -9,6 +9,8 @@ import NotFound from "./pages/notFound/NotFound";
 import Privacy from "./pages/privacy/Privacy";
 
 const App = () => {
+    const reload = () => window.location.reload();
+
     return (
         <Layout
             style={{
@@ -31,6 +33,11 @@ const App = () => {
                     path="/first-login"
                     component={FirstLogin}
                     redirect="/"
+                />
+                <Route
+                    exact
+                    path="/apple-app-site-association"
+                    onEnter={reload}
                 />
                 <Route path="/privacy" exact component={Privacy} />
                 <Route component={NotFound} />
