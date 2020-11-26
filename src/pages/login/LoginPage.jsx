@@ -17,7 +17,22 @@ const Login = () => {
         const key = localStorage.getItem("key");
 
         if (key) {
-            history.push("start-now");
+            Axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/exists/`, {
+                headers: {
+                    Authorization: key,
+                },
+            })
+                .then((res) => {
+                    // console.log(res.data);
+                    const { username_exists } = res.data;
+                    if (username_exists) {
+                        history.push("start-now");
+                    }
+                    return history.push("/first-login");
+                })
+                .catch((err) => {
+                    console.error("error getting username", err);
+                });
         }
 
         // eslint-disable-next-line
