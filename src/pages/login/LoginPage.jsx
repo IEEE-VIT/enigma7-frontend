@@ -1,12 +1,13 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useRef, useState } from "react";
-import "./login.css";
-import { Typography, Button } from "antd";
-import { useHistory } from "react-router-dom";
+import { Typography, Button, notification } from "antd";
+import { Link, useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
 import LoginNav from "../../components/loginNav/LoginNav";
+
+import "./login.css";
 
 const Login = () => {
     const history = useHistory();
@@ -26,12 +27,20 @@ const Login = () => {
                     // console.log(res.data);
                     const { username_exists } = res.data;
                     if (username_exists) {
-                        history.push("start-now");
+                        history.push("/menu");
                     }
                     return history.push("/first-login");
                 })
                 .catch((err) => {
                     console.error("error getting username", err);
+                    notification.error({
+                        message: "Sorry!",
+                        description: "Something Went Wrong, Please try again",
+                        style: {
+                            background: "#26df21",
+                        },
+                        duration: 0,
+                    });
                 });
         }
 
@@ -60,6 +69,14 @@ const Login = () => {
             })
             .catch((e) => {
                 console.error("Auth backend error", e);
+                notification.error({
+                    message: "Sorry!",
+                    description: "Something Went Wrong, Please try again",
+                    style: {
+                        background: "#26df21",
+                    },
+                    duration: 0,
+                });
             });
     };
 
@@ -109,7 +126,18 @@ const Login = () => {
                     <GoogleLogin
                         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         onSuccess={onSignUpWithGoogle}
-                        onFailure={() => console.error("Are you offline?")}
+                        onFailure={() => {
+                            console.error("Are you offline?");
+                            notification.error({
+                                message: "Sorry!",
+                                description:
+                                    "Something Went Wrong, Please try again",
+                                style: {
+                                    background: "#26df21",
+                                },
+                                duration: 0,
+                            });
+                        }}
                         cookiePolicy="single_host_origin"
                         // responseType="code"
                         redirectUri={process.env.REACT_APP_GOOGLE_REDIRECT_URL}
@@ -127,6 +155,9 @@ const Login = () => {
                             </Button>
                         )}
                     />
+                    <Link to="/partners" className="cursor">
+                        <u>Sponsors and Partners</u>
+                    </Link>
                 </div>
             </div>
         </div>

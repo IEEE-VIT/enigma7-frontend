@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import FirstLogin from "./pages/firstLogin/FirstLoginPage";
 import NotFound from "./pages/notFound/NotFound";
 import Privacy from "./pages/privacy/Privacy";
+import Partners from "./pages/partners/Partners";
 
 const App = () => {
     const reload = () => window.location.reload();
@@ -34,6 +35,7 @@ const App = () => {
                     component={FirstLogin}
                     redirect="/"
                 />
+                <Route exact path="/partners" component={Partners} />
                 <Route
                     exact
                     path="/apple-app-site-association"
