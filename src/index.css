@@ -94,10 +94,19 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin: 1rem 2rem;
 }
 
 .partner-img {
     margin: 1rem;
     width: auto;
     height: 10rem;
+}
+
+@media only screen and (max-width: 500px) {
+    .partner-img {
+        margin: 1rem;
+        width: 250px;
+        height: auto;
+    }
 }
