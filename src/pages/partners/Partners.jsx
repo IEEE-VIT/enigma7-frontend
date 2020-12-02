@@ -109,6 +109,17 @@ const Partners = () => {
                             alt="abcdef"
                         />
                     </a>
+                    <a
+                        href="https://instagram.com/infosec_hub?igshid=17ytuosczpvwi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            className="partner-img"
+                            src="https://i.ibb.co/vVbs5M8/96856959-606698376602799-4510190800147054592-n.jpg"
+                            alt="abcdefg"
+                        />
+                    </a>
                 </div>
             </div>
         </div>
