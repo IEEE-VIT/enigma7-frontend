@@ -186,7 +186,8 @@ const Login = () => {
                         authOptions={{
                             clientId: process.env.REACT_APP_APPLE_CLIENT_ID,
                             scope: "email name",
-                            redirectURI: "https://enigma7-temporary.vercel.app",
+                            redirectURI:
+                                process.env.REACT_APP_APPLE_REDIRECT_URL,
                             nonce: "nonce",
                             usePopup: true,
                         }} // REQUIRED
