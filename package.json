@@ -11,7 +11,9 @@
         "axios": "^0.20.0",
         "craco-less": "^1.17.0",
         "dotenv": "^8.2.0",
+        "moment": "^2.29.1",
         "react": "^16.13.1",
+        "react-apple-signin-auth": "^0.0.6",
         "react-dom": "^16.13.1",
         "react-ga": "^3.3.0",
         "react-google-login": "^5.1.21",
@@ -20,7 +22,7 @@
     },
     "scripts": {
         "start": "craco start",
-        "build": "craco build",
+        "build": "GENERATE_SOURCEMAP=false craco build",
         "test": "craco test",
         "eject": "react-scripts eject",
         "lint": "eslint ."

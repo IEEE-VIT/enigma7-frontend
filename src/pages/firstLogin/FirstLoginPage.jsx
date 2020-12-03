@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+/* eslint-disable camelcase */
+import React, { useEffect, useState } from "react";
 import { Button, Input, Radio, Select } from "antd";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
 
 import "./firstLogin.css";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const { Option } = Select;
 
@@ -12,12 +14,36 @@ const FirstLogin = () => {
     const [error, setError] = useState();
     const [footer] = useState("Press ENTER to continue");
     const [username, setUsername] = useState("false");
-    const [collegeStudent, setCollegeStudent] = useState("false");
-    const [outreach, setOutreach] = useState("false");
-    const [year, setYear] = useState("");
+    const [collegeStudent, setCollegeStudent] = useState(false);
+    const [outreach, setOutreach] = useState();
+    const [year, setYear] = useState();
     const [loading, setLoading] = useState(false);
+    const [loadingPage, setLoadingPage] = useState(true);
 
     const history = useHistory();
+
+    useEffect(() => {
+        const key = localStorage.getItem("key");
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/exists/`, {
+            headers: {
+                Authorization: key,
+            },
+        })
+            .then((res) => {
+                // console.log(res.data);
+                const { username_exists } = res.data;
+                if (username_exists) {
+                    history.push("start-now");
+                }
+                setLoadingPage(false);
+            })
+            .catch((err) => {
+                console.error("error getting username", err);
+            });
+        // eslint-disable-next-line
+    }, []);
+
+    //
     // const onFinish = (values) => {
     //     console.log(values);
     //     setError("error 404! no backend found");
@@ -28,11 +54,15 @@ const FirstLogin = () => {
     //     // history.push("/startNow");
     // }
 
+    // eslint-disable-next-line consistent-return
     const onFinish = async () => {
         const key = localStorage.getItem("key");
-        console.log(username, collegeStudent, year, outreach);
-        if (!username || !collegeStudent || !year || !outreach) {
-            setError("Enter the required values");
+        // console.log(username, collegeStudent, year, outreach);
+        if (!username || !outreach) {
+            return setError("Enter the required values");
+        }
+        if (collegeStudent && !year) {
+            return setError("Enter the required values");
         }
         setLoading(true);
         Axios.patch(
@@ -46,10 +76,6 @@ const FirstLogin = () => {
                 },
             }
         )
-            .then((res) => {
-                console.log(res.data);
-                setLoading(false);
-            })
             .then(() => {
                 Axios.post(
                     `${process.env.REACT_APP_BACKEND_URL}/users/outreach/`,
@@ -65,22 +91,33 @@ const FirstLogin = () => {
                     }
                 )
                     .then(() => {
-                        console.log("?startnow");
-                        history.push("/startNow");
+                        // console.log("?startnow");
+                        setLoading(false);
+                        return history.push("/start-now");
                     })
                     .catch((err) => {
-                        console.error("error sending first login", err);
+                        setError(
+                            "Please make sure the details are appropriate"
+                        );
+                        setLoading(false);
+                        return console.error("Error in first login", err);
                     });
             })
             .catch((err) => {
-                console.error("error sending username", err);
+                setLoading(false);
+                setError("Please make sure the details are appropriate");
+                return console.error("error sending username", err);
             });
     };
 
     if (useKeyPress("Enter")) {
-        console.log("done");
+        // console.log("done");
         onFinish();
-        // history.push("/startNow");
+        // history.push("/start-now");
+    }
+
+    if (loadingPage) {
+        return <LoadingPage />;
     }
 
     return (
@@ -92,19 +129,23 @@ const FirstLogin = () => {
                         Choose a username
                         <br /> [this can’t be edited later]
                     </div>
+                    <br />{" "}
+                    <span style={{ marginTop: 0 }}>
+                        [Special characters are not allowed]
+                    </span>
                     <Input
                         autoComplete="off"
                         className="first-login-input question-input"
                         onChange={(e) => {
                             setUsername(e.target.value);
                         }}
+                        style={{ marginTop: 0 }}
                     />
                     <div className="first-login-question">
                         Where did you hear about us?
                     </div>
                     <br />
                     <Select
-                        defaultValue="Word of mouth"
                         style={{ width: 200 }}
                         onChange={(value) => setOutreach(value)}
                     >
@@ -127,32 +168,35 @@ const FirstLogin = () => {
                         style={{ margin: "1rem" }}
                         onChange={(e) => setCollegeStudent(e.target.value)}
                     >
-                        <Radio.Button value="true">Yes</Radio.Button>
-                        <Radio.Button value="false">No</Radio.Button>
+                        <Radio.Button value>Yes</Radio.Button>
+                        <Radio.Button value={false}>No</Radio.Button>
                     </Radio.Group>
                     <br />
                     <br />
-                    <div className="first-login-question">
-                        Which year do you study in?
-                    </div>
+                    {!collegeStudent ? null : (
+                        <div className="first-login-year">
+                            <div className="first-login-question">
+                                Which year will you graduate in?
+                            </div>
+                            <br />
+                            <Select
+                                onChange={(value) => setYear(value)}
+                                style={{
+                                    width: 200,
+                                    backgroundColor: "#182f24",
+                                    color: "white",
+                                }}
+                            >
+                                <Option value="2020">2020</Option>
+                                <Option value="2021">2021</Option>
+                                <Option value="2022">2022</Option>
+                                <Option value="2023">2023</Option>
+                                <Option value="2024">2024</Option>
+                            </Select>
+                        </div>
+                    )}
                     <br />
-                    <Select
-                        onChange={(value) => setYear(value)}
-                        style={{
-                            width: 200,
-                            backgroundColor: "#182f24",
-                            color: "white",
-                        }}
-                    >
-                        <Option value="2020">2020</Option>
-                        <Option value="2021">2021</Option>
-                        <Option value="2022">2022</Option>
-                        <Option value="2023">2023</Option>
-                        <Option value="2024">2024</Option>
-                    </Select>
                     <br />
-                    <br />
-
                     <Button
                         onClick={onFinish}
                         type="primary"
@@ -162,12 +206,14 @@ const FirstLogin = () => {
                     >
                         Submit
                     </Button>
-
                     {error ? (
-                        <div className="first-login-question">
+                        <div
+                            style={{ color: "#F50C0C" }}
+                            className="first-login-question"
+                        >
                             ________________
                             <br />
-                            InvalidUsername. <br /> -&gt; {error}!
+                            Invalid Entries. <br /> -&gt; {error}!
                         </div>
                     ) : null}
                 </div>

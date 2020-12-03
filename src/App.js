@@ -5,8 +5,13 @@ import TimerPage from "./pages/timer/TimerPage";
 import LoginPage from "./pages/login/LoginPage";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import FirstLogin from "./pages/firstLogin/FirstLoginPage";
+import NotFound from "./pages/notFound/NotFound";
+// import Privacy from "./pages/privacy/Privacy";
+import Partners from "./pages/partners/Partners";
 
 const App = () => {
+    const reload = () => window.location.reload();
+
     return (
         <Layout
             style={{
@@ -20,16 +25,24 @@ const App = () => {
                 <Route exact path="/" component={LoginPage} />
                 <ProtectedRoute
                     exact
-                    path="/startNow"
+                    path="/start-now"
                     component={TimerPage}
                     redirect="/"
                 />
                 <ProtectedRoute
                     exact
-                    path="/firstLogin"
+                    path="/first-login"
                     component={FirstLogin}
                     redirect="/"
                 />
+                <Route exact path="/partners" component={Partners} />
+                <Route
+                    exact
+                    path="/apple-app-site-association"
+                    onEnter={reload}
+                />
+                {/* <Route path="/privacy" exact component={Privacy} /> */}
+                <Route component={NotFound} />
             </Switch>
         </Layout>
     );

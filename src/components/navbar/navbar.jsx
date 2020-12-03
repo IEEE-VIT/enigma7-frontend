@@ -24,8 +24,14 @@ const NavBar = () => {
             <Typography.Title level={3} className="nav-heading">
                 ENIGMA
             </Typography.Title>
-            <Typography.Title level={3} className="question-mark nav-text">
-                ?
+            <Typography.Title
+                onClick={() => {
+                    history.push("/instructions");
+                }}
+                level={3}
+                className="question-mark nav-text"
+            >
+                i
             </Typography.Title>
         </Header>
     );
