@@ -6,7 +6,7 @@ import LoginPage from "./pages/login/LoginPage";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import FirstLogin from "./pages/firstLogin/FirstLoginPage";
 import NotFound from "./pages/notFound/NotFound";
-import Privacy from "./pages/privacy/Privacy";
+// import Privacy from "./pages/privacy/Privacy";
 import Partners from "./pages/partners/Partners";
 
 const App = () => {
@@ -41,7 +41,7 @@ const App = () => {
                     path="/apple-app-site-association"
                     onEnter={reload}
                 />
-                <Route path="/privacy" exact component={Privacy} />
+                {/* <Route path="/privacy" exact component={Privacy} /> */}
                 <Route component={NotFound} />
             </Switch>
         </Layout>

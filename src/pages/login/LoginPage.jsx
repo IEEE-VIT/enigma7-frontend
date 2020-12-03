@@ -4,15 +4,18 @@ import { Typography, Button, notification } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
+import AppleSignin from "react-apple-signin-auth";
 import useKeyPress from "../../hooks/useKeyPress";
 import LoginNav from "../../components/loginNav/LoginNav";
+import privacy from "../../images/Privacy.pdf";
 
 import "./login.css";
 
 const Login = () => {
     const history = useHistory();
 
-    const [loading, setLoading] = useState(false);
+    const [googleLoading, setGoogleLoading] = useState(false);
+    const [appleLoading, setAppleLoading] = useState(false);
 
     useEffect(() => {
         const key = localStorage.getItem("key");
@@ -27,7 +30,7 @@ const Login = () => {
                     // console.log(res.data);
                     const { username_exists } = res.data;
                     if (username_exists) {
-                        history.push("/menu");
+                        history.push("/start-now");
                     }
                     return history.push("/first-login");
                 })
@@ -48,7 +51,7 @@ const Login = () => {
     }, []);
 
     const onSignUpWithGoogle = (response) => {
-        setLoading(true);
+        setGoogleLoading(true);
         Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/google/`, {
             access_token: response.accessToken,
         })
@@ -61,7 +64,7 @@ const Login = () => {
             .then((data) => {
                 const { key, username_exists } = data;
                 localStorage.setItem("key", `token ${key}`);
-                setLoading(false);
+                setGoogleLoading(false);
                 if (!username_exists) {
                     return history.push("/first-login");
                 }
@@ -80,10 +83,33 @@ const Login = () => {
             });
     };
 
+    const onSignUpWithApple = (response) => {
+        setAppleLoading(true);
+
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/apple/`, {
+            code: response.authorization.code,
+            access_token: response.authorization.id_token,
+        })
+            .then((res) => {
+                // eslint-disable-next-line no-unused-vars
+                const { key, username_exists } = res.data;
+                localStorage.setItem("key", `token ${key}`);
+                setAppleLoading(false);
+                if (!username_exists) {
+                    return history.push("/first-login");
+                }
+                return history.push("/start-now");
+            })
+            .catch((e) => {
+                console.error("google Auth own backend error", e);
+            });
+    };
+
     const googleBtn = useRef(null);
+    const appleBtn = useRef(null);
 
     if (useKeyPress("ArrowDown")) {
-        googleBtn.current.focus();
+        appleBtn.current.focus();
     }
 
     if (useKeyPress("ArrowUp")) {
@@ -112,7 +138,7 @@ const Login = () => {
                     01100001 01111001 01110011 00100000 01101100 01101111
                     01101111 01101011 00100000 01101111 01110101 01110100
                     00100000 01100110 01101111 01110010 00100000 01100011
-                    01101100 01110101 01100101 01110011 01110011 01110011
+                    01101100 01110101 01100101 01110011
                 </div>
                 <div className="login-heading">
                     <Typography className="login-title">ENIGMA</Typography>
@@ -149,14 +175,49 @@ const Login = () => {
                                 type="primary"
                                 ref={googleBtn}
                                 autofocus
-                                loading={loading}
+                                loading={googleLoading}
                             >
                                 Continue with Google
                             </Button>
                         )}
                     />
+
+                    <AppleSignin
+                        authOptions={{
+                            clientId: process.env.REACT_APP_APPLE_CLIENT_ID,
+                            scope: "email name",
+                            redirectURI: "https://enigma7-temporary.vercel.app",
+                            nonce: "nonce",
+                            usePopup: true,
+                        }} // REQUIRED
+                        // uiType="dark"
+                        onSuccess={onSignUpWithApple} // default = undefined
+                        onError={(error) => console.error(error)} // default = undefined
+                        // skipScript={false} // default = undefined
+                        // iconProp={{ style: { marginTop: "10px" } }} // default = undefined
+                        render={(props) => (
+                            <Button
+                                onClick={props.onClick}
+                                className="login-btn google-btn"
+                                type="primary"
+                                ref={appleBtn}
+                                loading={appleLoading}
+                            >
+                                Continue with Apple
+                            </Button>
+                        )}
+                    />
+
                     <Link to="/partners" className="cursor">
                         <u>Sponsors and Partners</u>
+                    </Link>
+                    <Link
+                        className="cursor"
+                        href={privacy}
+                        target="__blank"
+                        rel="noopener noreferrer"
+                    >
+                        <u>Privacy</u>
                     </Link>
                 </div>
             </div>

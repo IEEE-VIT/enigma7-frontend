@@ -7,7 +7,7 @@ import character from "../../images/character.gif";
 const NotFound = () => (
     <div className="not-found-page">
         {/* <div style={{ fontSize: "200px", color: "#26df21" }}>404</div> */}
-        <img style={{}} className="character" src={character} alt="" />
+        <img className="character" src={character} alt="" />
         <Typography.Title style={{ color: "#26df21", textAlign: "center" }}>
             {">>"} Error 404: Page Not Found
         </Typography.Title>
