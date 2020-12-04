@@ -307,7 +307,7 @@ const Question = () => {
             })
             .then((data) => {
                 // const { status, detail } = data;
-                if (data.status) {
+                if (data.question_id) {
                     return history.push("/new-story");
                 }
                 setModalImage("");
