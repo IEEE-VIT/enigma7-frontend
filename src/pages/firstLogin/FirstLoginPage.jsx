@@ -33,7 +33,7 @@ const FirstLogin = () => {
                 // console.log(res.data);
                 const { username_exists } = res.data;
                 if (username_exists) {
-                    history.push("/start-now");
+                    history.push("/menu");
                 }
                 setLoadingPage(false);
             })
@@ -101,7 +101,7 @@ const FirstLogin = () => {
                     .then(() => {
                         // console.log("?startnow");
                         setLoading(false);
-                        return history.push("/start-now");
+                        return history.push("/menu");
                     })
                     .catch((err) => {
                         if (err.response.status === 401) {

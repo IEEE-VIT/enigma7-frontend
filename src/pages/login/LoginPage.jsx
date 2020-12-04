@@ -68,7 +68,7 @@ const Login = () => {
                 if (!username_exists) {
                     return history.push("/first-login");
                 }
-                return history.push("/start-now");
+                return history.push("/menu");
             })
             .catch((e) => {
                 console.error("Auth backend error", e);
