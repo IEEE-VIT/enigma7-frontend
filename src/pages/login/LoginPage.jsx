@@ -174,7 +174,7 @@ const Login = () => {
                                 className="login-btn google-btn cursor"
                                 type="primary"
                                 ref={googleBtn}
-                                autofocus
+                                autoFocus
                                 loading={googleLoading}
                             >
                                 Continue with Google
