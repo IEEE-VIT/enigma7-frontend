@@ -5,7 +5,7 @@ import ProfilePage from "./pages/profile/profilePage";
 import StoryPage from "./pages/story/StoryPage";
 import MainPage from "./pages/main/main";
 import LeaderBoardPage from "./pages/leaderboard/LeaderBoardPage";
-import TimerPage from "./pages/timer/TimerPage";
+// import TimerPage from "./pages/timer/TimerPage";
 import QuestionPage from "./pages/question/QuestionPage";
 import LoginPage from "./pages/login/LoginPage";
 import NewStoryPage from "./pages/story/NewStoryPage";
@@ -66,12 +66,12 @@ const App = () => {
                     path="/new-story"
                     component={NewStoryPage}
                 />
-                <ProtectedRoute
+                {/* <ProtectedRoute
                     exact
                     path="/start-now"
                     component={TimerPage}
                     redirect="/"
-                />
+                /> */}
                 <ProtectedRoute
                     redirect="/"
                     exact

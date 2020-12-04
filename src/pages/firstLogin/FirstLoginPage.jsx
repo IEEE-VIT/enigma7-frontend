@@ -130,7 +130,6 @@ const FirstLogin = () => {
     if (useKeyPress("Enter")) {
         // console.log("done");
         onFinish();
-        // history.push("/start-now");
     }
 
     if (loadingPage) {
