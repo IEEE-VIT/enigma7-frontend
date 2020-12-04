@@ -17,6 +17,8 @@ import InfoPage from "./pages/infoPage/InfoPage";
 import Partners from "./pages/partners/Partners";
 import DownloadApp from "./pages/downloadApp/DownloadApp";
 
+import "./pages/timer/timer.css";
+
 const App = () => {
     const reload = () => window.location.reload();
     return (
