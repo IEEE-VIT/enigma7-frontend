@@ -30,7 +30,7 @@ const LeaderBoardPage = () => {
             const res = await getLeaderboard();
             setLeaderboard(res);
             setLoadingPage(false);
-            console.log(res);
+            // console.log(res);
         };
         getData();
     }, []);

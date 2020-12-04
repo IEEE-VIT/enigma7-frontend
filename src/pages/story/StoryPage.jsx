@@ -33,17 +33,18 @@ const StoryPage = () => {
         })
             .then((res) => {
                 const { data } = res;
-                console.log(data);
+                // console.log(data);
                 data.map((storyObj) => {
-                    console.log(storyObj.question_story.story_text);
+                    // console.log(storyObj.question_story.story_text);
                     // eslint-disable-next-line no-shadow
                     return setStory((story) => [
                         ...story,
                         storyObj.question_story.story_text,
                     ]);
                 });
-                console.log(data);
-                return console.log("story after loop", story);
+                // console.log(data);
+                // return console.log("story after loop", story);
+                return undefined;
             })
             .then(() => {
                 Axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/me/`, {
@@ -53,8 +54,8 @@ const StoryPage = () => {
                 })
                     .then((res) => {
                         const { data } = res;
-                        console.log(data);
-                        console.log("story in username", story);
+                        // console.log(data);
+                        // console.log("story in username", story);
                         return setUsername(data.username);
                     })
                     .then(() => {

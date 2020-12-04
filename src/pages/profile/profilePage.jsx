@@ -50,7 +50,7 @@ const ProfilePage = () => {
                 setquestionsAnswered(data.question_answered);
                 setRank(data.rank);
                 setPoints(data.points);
-                console.log(data);
+                // console.log(data);
             })
             .then(() => {
                 setLoadingPage(false);

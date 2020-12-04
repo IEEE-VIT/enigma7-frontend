@@ -39,11 +39,11 @@ const NewStoryPage = () => {
         })
             .then((res) => {
                 const { data } = res;
-                console.log(data);
+                // console.log(data);
                 return data.question_story.story_text;
             })
             .then((text) => {
-                console.log(text);
+                // console.log(text);
                 const storyTemp = text;
                 Axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/me/`, {
                     headers: {
@@ -52,7 +52,7 @@ const NewStoryPage = () => {
                 })
                     .then((res) => {
                         const { data } = res;
-                        console.log(data);
+                        // console.log(data);
                         setUsername(data.username);
                         return data.username;
                     })
@@ -85,9 +85,6 @@ const NewStoryPage = () => {
                             duration: 0,
                         });
                     });
-            })
-            .then(() => {
-                console.log("story:>>", story);
             })
             .catch((err) => {
                 console.error("error in get Story", err);

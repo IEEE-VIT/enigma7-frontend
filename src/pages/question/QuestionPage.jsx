@@ -64,7 +64,7 @@ const Question = () => {
     }, []);
 
     const getXP = () => {
-        console.log(xpTime);
+        // console.log(xpTime);
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/me/`, {
             headers: {
                 Authorization: key,
@@ -77,7 +77,7 @@ const Question = () => {
                 setHintPowerup(data.user_status.hint_powerup);
                 // setskipPowerup(data.user_status.skip_powerup);
                 setHintUsed(data.user_status.hint_used);
-                console.log(data);
+                // console.log(data);
             })
             .catch((err) => {
                 console.error("error in get xp", err);
@@ -107,7 +107,7 @@ const Question = () => {
                 setQuestion(data.text);
                 setImg(data.img_url);
                 setQuestionId(data.order);
-                console.log(data);
+                // console.log(data);
             })
             .then(() => {
                 setLoadingPage(false);
@@ -134,11 +134,11 @@ const Question = () => {
                 const { data } = res;
                 setXpTime(data.time_left);
 
-                console.log(data);
+                // console.log(data);
             })
             .then(() => {
                 setTimeout(() => {
-                    console.log("fire xpTime", xpTime);
+                    // console.log("fire xpTime", xpTime);
                     getXP();
                 }, xpTime);
             })
@@ -161,7 +161,7 @@ const Question = () => {
     }
 
     const onAnswer = () => {
-        console.log("Answer:", answer);
+        // console.log("Answer:", answer);
         Axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/game/answer/`,
             {
@@ -175,7 +175,7 @@ const Question = () => {
         )
             .then((res) => {
                 const { data } = res;
-                console.log("answer:>>", data);
+                // console.log("answer:>>", data);
                 return data;
             })
             .then((data) => {
@@ -196,7 +196,7 @@ const Question = () => {
                 }
                 // eslint-disable-next-line camelcase
                 // setModalText(`${answer},${close_answer}, ${detail}`);
-                console.log(data);
+                // console.log(data);
                 showModal(true);
             })
             .catch((err) => {
@@ -225,7 +225,7 @@ const Question = () => {
         })
             .then((res) => {
                 const { data } = res;
-                console.log(data);
+                // console.log(data);
                 return data;
             })
             .then((data) => {
@@ -260,7 +260,7 @@ const Question = () => {
         )
             .then((res) => {
                 const { data } = res;
-                console.log("Skip:>>", data);
+                // console.log("Skip:>>", data);
                 return data;
             })
             .then((data) => {
@@ -287,7 +287,7 @@ const Question = () => {
 
     const selectCloseAnsPower = () => {
         setButtonModal(false);
-        console.log("close ans");
+        // console.log("close ans");
 
         Axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/game/powerup/close-answer/`,
@@ -302,7 +302,7 @@ const Question = () => {
         )
             .then((res) => {
                 const { data } = res;
-                console.log("Close Ans:>>", data);
+                // console.log("Close Ans:>>", data);
                 return data;
             })
             .then((data) => {
@@ -331,7 +331,7 @@ const Question = () => {
 
     const onHintClick = () => {
         setButtonModal(false);
-        console.log("used hint");
+        // console.log("used hint");
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/hint`, {
             headers: {
                 Authorization: key,
@@ -339,12 +339,12 @@ const Question = () => {
         })
             .then((res) => {
                 const { data } = res;
-                console.log(data);
+                // console.log(data);
                 return data;
             })
             .then((data) => {
                 setHintUsed(true);
-                console.log(data.hint);
+                // console.log(data.hint);
                 setModalImage("");
                 setModalText(`Hint - > ${data.hint}`);
                 // setModalText(data.hint);
@@ -374,19 +374,19 @@ const Question = () => {
     const handleOk = () => {
         switch (powerType) {
             case "hintpower":
-                console.log("hint power up used");
+                // console.log("hint power up used");
                 selectHintPower();
                 break;
             case "closepower":
-                console.log("close answer power up used");
+                // console.log("close answer power up used");
                 selectCloseAnsPower();
                 break;
             case "skippower":
-                console.log("skip question power up used");
+                // console.log("skip question power up used");
                 selectSkipPower();
                 break;
             case "hintused":
-                console.log("hint used");
+                // console.log("hint used");
                 onHintClick();
                 break;
             default:
@@ -395,10 +395,10 @@ const Question = () => {
     };
 
     const setPowerTypeFunction = (power) => {
-        console.log(power);
+        // console.log(power);
         setPowerType(power);
         if (power === "hintused" && (hintUsed || hintPowerup)) {
-            console.log("hint is used");
+            // console.log("hint is used");
             onHintClick();
             return;
         }
@@ -412,18 +412,18 @@ const Question = () => {
         setButtonModal(true);
     };
 
-    const handleCancel = (e) => {
-        console.log(e);
+    const handleCancel = () => {
+        // console.log(e);
         setButtonModal(false);
     };
 
-    const handleOk2 = (e) => {
-        console.log(e);
+    const handleOk2 = () => {
+        // console.log(e);
         showModal(false);
     };
 
-    const handleCancel2 = (e) => {
-        console.log(e);
+    const handleCancel2 = () => {
+        // console.log(e);
         showModal(false);
     };
 
