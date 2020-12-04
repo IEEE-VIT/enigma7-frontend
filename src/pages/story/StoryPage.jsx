@@ -88,7 +88,7 @@ const StoryPage = () => {
             });
         // eslint-disable-next-line
     }, []);
-    console.log("story in main", story);
+    // console.log("story in main", story);
     if (loadingPage) {
         return <LoadingPage />;
     }
