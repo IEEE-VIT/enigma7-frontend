@@ -432,7 +432,7 @@ const Question = () => {
     }
 
     const firstStory = localStorage.getItem("firstStory");
-    console.log("result", questionId === 1 && firstStory);
+    // console.log("result", questionId === 1 && firstStory);
 
     if (questionId === 1 && firstStory === "true") {
         localStorage.setItem("firstStory", 0);
