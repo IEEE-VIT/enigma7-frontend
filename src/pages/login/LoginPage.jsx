@@ -68,6 +68,7 @@ const Login = () => {
                 if (!username_exists) {
                     return history.push("/first-login");
                 }
+                localStorage.setItem("firstStory", "true");
                 return history.push("/menu");
             })
             .catch((e) => {
@@ -98,6 +99,7 @@ const Login = () => {
                 if (!username_exists) {
                     return history.push("/first-login");
                 }
+                localStorage.setItem("firstStory", "true");
                 return history.push("/menu");
             })
             .catch((e) => {

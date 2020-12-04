@@ -431,6 +431,14 @@ const Question = () => {
         return <LoadingPage />;
     }
 
+    const firstStory = localStorage.getItem("firstStory");
+    console.log("result", questionId === 1 && firstStory);
+
+    if (questionId === 1 && firstStory === "true") {
+        localStorage.setItem("firstStory", 0);
+        history.push("/new-story");
+    }
+
     return (
         <Layout className="page">
             <NavBar />
