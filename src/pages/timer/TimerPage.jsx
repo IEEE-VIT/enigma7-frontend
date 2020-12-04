@@ -16,11 +16,11 @@ const Timer = () => {
     const [deadline, setDeadline] = useState(false);
 
     useEffect(() => {
-        setDeadline(moment("2020-12-04-16-20", "YYYY-MM-DD-hh-mm"));
+        setDeadline(Date.now() + 1000 * 5);
     }, []);
     if (useKeyPress("Enter") && startNow) {
         // console.log("done");
-        history.push("/menu");
+        setDeadline(moment("2020-12-04-16-20", "YYYY-MM-DD-hh-mm"));
     }
     const onFinish = () => {
         // console.log("finished!");
@@ -51,7 +51,7 @@ const Timer = () => {
                     <Button
                         onClick={onLogout}
                         type="primary"
-                        className="logout-btn login-btn"
+                        className="logout-btn login-btn cursor"
                     >
                         Logout
                     </Button>

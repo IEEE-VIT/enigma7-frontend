@@ -11,7 +11,7 @@ const NotFound = () => (
         <Typography.Title style={{ color: "#26df21", textAlign: "center" }}>
             {">>"} Error 404: Page Not Found
         </Typography.Title>
-        <Button style={{ marginBottom: "15rem" }} className="login-btn">
+        <Button style={{ marginBottom: "15rem" }} className="login-btn cursor">
             <Link to="/">Take me home</Link>
         </Button>
     </div>

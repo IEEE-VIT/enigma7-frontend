@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Layout } from "antd";
 import "./navbar.css";
 import { useHistory } from "react-router-dom";
@@ -12,12 +12,16 @@ const NavBar = () => {
         history.push("/menu");
     };
 
+    useEffect(() => {
+        localStorage.setItem("prevPage", window.location.pathname);
+    }, []);
+
     return (
         <Header className="header">
             <Typography.Title
                 onClick={onEscPress}
                 level={3}
-                className="nav-text"
+                className="nav-text cursor"
             >
                 Esc
             </Typography.Title>
@@ -29,7 +33,7 @@ const NavBar = () => {
                     history.push("/instructions");
                 }}
                 level={3}
-                className="question-mark nav-text"
+                className="question-mark nav-text cursor"
             >
                 i
             </Typography.Title>

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from "react";
-import { Button, Input, Radio, Select } from "antd";
+import { Button, Input, notification, Radio, Select } from "antd";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import useKeyPress from "../../hooks/useKeyPress";
@@ -33,16 +33,25 @@ const FirstLogin = () => {
                 // console.log(res.data);
                 const { username_exists } = res.data;
                 if (username_exists) {
-                    history.push("start-now");
+                    history.push("/start-now");
                 }
                 setLoadingPage(false);
             })
             .catch((err) => {
                 console.error("error getting username", err);
+                notification.error({
+                    message: "Sorry!",
+                    description: "Something Went Wrong, Please try again",
+                    style: {
+                        background: "#26df21",
+                    },
+                    duration: 0,
+                });
             });
         // eslint-disable-next-line
     }, []);
 
+    //
     // const onFinish = (values) => {
     //     console.log(values);
     //     setError("error 404! no backend found");
@@ -95,22 +104,33 @@ const FirstLogin = () => {
                         return history.push("/start-now");
                     })
                     .catch((err) => {
-                        setError(
+                        if (err.response.status === 401) {
+                            setError(
+                                "Please make sure the username is appropriate"
+                            );
+                            setLoading(false);
+                        }
+                        setLoading(false);
+                        return setError(
                             "Please make sure the details are appropriate"
                         );
-                        setLoading(false);
-                        return console.error("Error in first login", err);
                     });
             })
             .catch((err) => {
                 setLoading(false);
                 setError("Please make sure the details are appropriate");
-                return console.error("error sending username", err);
+                setError(
+                    err.message ||
+                        "Please make sure the details are appropriate"
+                );
+                return console.error("error sending username", err.message);
             });
     };
 
     if (useKeyPress("Enter")) {
+        // console.log("done");
         onFinish();
+        // history.push("/start-now");
     }
 
     if (loadingPage) {

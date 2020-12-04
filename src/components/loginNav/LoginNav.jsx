@@ -22,7 +22,7 @@ const LoginNav = () => {
                 . Reach out to us at
             </span>
             &nbsp;
-            <span>
+            <span style={{ display: "flex" }}>
                 <span className="login-nav-icon">
                     <a
                         target="_blank"

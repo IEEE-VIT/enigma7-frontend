@@ -7,7 +7,7 @@ import Axios from "axios";
 import AppleSignin from "react-apple-signin-auth";
 import useKeyPress from "../../hooks/useKeyPress";
 import LoginNav from "../../components/loginNav/LoginNav";
-import privacy from "../../images/Privacy.pdf";
+import Privacy from "../../images/Privacy.pdf";
 
 import "./login.css";
 
@@ -30,7 +30,7 @@ const Login = () => {
                     // console.log(res.data);
                     const { username_exists } = res.data;
                     if (username_exists) {
-                        history.push("/start-now");
+                        history.push("/menu");
                     }
                     return history.push("/first-login");
                 })
@@ -98,7 +98,7 @@ const Login = () => {
                 if (!username_exists) {
                     return history.push("/first-login");
                 }
-                return history.push("/start-now");
+                return history.push("/menu");
             })
             .catch((e) => {
                 console.error("google Auth own backend error", e);
@@ -171,7 +171,7 @@ const Login = () => {
                             <Button
                                 onClick={renderProps.onClick}
                                 // disabled={renderProps.disabled}
-                                className="login-btn google-btn"
+                                className="login-btn google-btn cursor"
                                 type="primary"
                                 ref={googleBtn}
                                 autofocus
@@ -186,8 +186,7 @@ const Login = () => {
                         authOptions={{
                             clientId: process.env.REACT_APP_APPLE_CLIENT_ID,
                             scope: "email name",
-                            redirectURI:
-                                process.env.REACT_APP_APPLE_REDIRECT_URL,
+                            redirectURI: "https://enigma7-temporary.vercel.app",
                             nonce: "nonce",
                             usePopup: true,
                         }} // REQUIRED
@@ -199,7 +198,7 @@ const Login = () => {
                         render={(props) => (
                             <Button
                                 onClick={props.onClick}
-                                className="login-btn google-btn"
+                                className="login-btn google-btn cursor"
                                 type="primary"
                                 ref={appleBtn}
                                 loading={appleLoading}
@@ -212,14 +211,14 @@ const Login = () => {
                     <Link to="/partners" className="cursor">
                         <u>Sponsors and Partners</u>
                     </Link>
-                    <Link
+                    <a
                         className="cursor"
-                        href={privacy}
+                        href={Privacy}
                         target="__blank"
                         rel="noopener noreferrer"
                     >
                         <u>Privacy</u>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>
