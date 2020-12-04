@@ -231,7 +231,7 @@ const Question = () => {
             .then((data) => {
                 setHintUsed(true);
                 setModalImage("");
-                setModalText(data.hint);
+                setModalText(data.hint || "Insufficient xp");
                 showModal(true);
                 getXP();
             })
