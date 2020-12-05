@@ -168,6 +168,17 @@ const Partners = () => {
                             alt="abcdefg"
                         />
                     </a>
+                    <a
+                        href="https://www.instagram.com/logical_programming/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            className="partner-img"
+                            src="https://i.ibb.co/R0rRQLP/118954369-1454885731361625-5885773469577963918-n.jpg"
+                            alt="abcdefgh"
+                        />
+                    </a>
                 </div>
             </div>
         </div>
