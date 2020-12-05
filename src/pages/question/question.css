@@ -7,6 +7,7 @@
     scrollbar-width: thin;
     overflow-x: hidden;
     padding: 0 1rem;
+    max-width: 50%;
 }
 
 .question-body::-webkit-scrollbar {
@@ -18,6 +19,7 @@
     flex-direction: row;
     justify-content: space-around;
     margin: 1rem 0;
+    width: 100%;
 }
 
 /* .ant-progress-outer {
