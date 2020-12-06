@@ -21,6 +21,7 @@ import closeAnswer from "../../images/closeAnswer.png";
 import correctAnswer from "../../images/correctAnswer.png";
 import LoadingPage from "../loadingPage/LoadingPage";
 import isMobile from "../../utils/checkMobile";
+import Footer from "../../components/Footer/Footer";
 
 const { Content } = Layout;
 
@@ -97,7 +98,7 @@ const Question = () => {
         getXP();
 
         // get question
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/question/`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/web/question/`, {
             headers: {
                 Authorization: key,
             },
@@ -163,7 +164,7 @@ const Question = () => {
     const onAnswer = () => {
         // console.log("Answer:", answer);
         Axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/game/answer/`,
+            `${process.env.REACT_APP_BACKEND_URL}/web/answer/`,
             {
                 answer,
             },
@@ -332,7 +333,7 @@ const Question = () => {
     const onHintClick = () => {
         setButtonModal(false);
         // console.log("used hint");
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/hint`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/web/hint`, {
             headers: {
                 Authorization: key,
             },
@@ -562,6 +563,7 @@ const Question = () => {
                     </div>
                 </Modal>
             </Content>
+            <Footer />
         </Layout>
     );
 };
