@@ -1,23 +1,21 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
-import ProfilePage from "./pages/profile/profilePage";
-import StoryPage from "./pages/story/StoryPage";
-import MainPage from "./pages/main/main";
 import LeaderBoardPage from "./pages/leaderboard/LeaderBoardPage";
 // import TimerPage from "./pages/timer/TimerPage";
-import QuestionPage from "./pages/question/QuestionPage";
 import LoginPage from "./pages/login/LoginPage";
-import NewStoryPage from "./pages/story/NewStoryPage";
 import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
 import NotFound from "./pages/notFound/NotFound";
 // import Privacy from "./pages/privacy/Privacy";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
-import InfoPage from "./pages/infoPage/InfoPage";
 import Partners from "./pages/partners/Partners";
-import DownloadApp from "./pages/downloadApp/DownloadApp";
+import ThankYouPage from "./pages/thankYou/ThankYouPage";
 
 import "./pages/timer/timer.css";
+import "./pages/profile/profile.css";
+import "./pages/question/question.css";
+import "./pages/story/story.css";
+import "./pages/main/main.css";
 
 const App = () => {
     const reload = () => window.location.reload();
@@ -31,7 +29,7 @@ const App = () => {
             }}
         >
             <Switch>
-                <ProtectedRoute
+                {/* <ProtectedRoute
                     redirect="/"
                     exact
                     path="/profile"
@@ -48,15 +46,9 @@ const App = () => {
                     exact
                     path="/menu"
                     component={MainPage}
-                />
-                <ProtectedRoute
-                    redirect="/"
-                    exact
-                    path="/leaderboard"
-                    component={LeaderBoardPage}
-                />
+                /> */}
 
-                <ProtectedRoute
+                {/* <ProtectedRoute
                     redirect="/"
                     exact
                     path="/Questions"
@@ -67,18 +59,24 @@ const App = () => {
                     exact
                     path="/new-story"
                     component={NewStoryPage}
-                />
+                /> */}
                 {/* <ProtectedRoute
                     exact
                     path="/start-now"
                     component={TimerPage}
                     redirect="/"
                 /> */}
-                <ProtectedRoute
+                {/* <ProtectedRoute
                     redirect="/"
                     exact
                     path="/instructions"
                     component={InfoPage}
+                /> */}
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/leaderboard"
+                    component={LeaderBoardPage}
                 />
                 <ProtectedRoute
                     redirect="/"
@@ -86,7 +84,13 @@ const App = () => {
                     path="/first-login"
                     component={FirstLoginPage}
                 />
-                <Route exact path="/download" component={DownloadApp} />
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/thank-you"
+                    component={ThankYouPage}
+                />
+                {/* <Route exact path="/download" component={DownloadApp} /> */}
                 <Route exact path="/partners" component={Partners} />
                 <Route path="/apple-app-site-association" onEnter={reload} />
                 <Route exact path="/" component={LoginPage} />

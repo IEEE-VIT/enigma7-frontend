@@ -21,7 +21,7 @@ const LeaderBoardPage = () => {
     }, []);
 
     if (useKeyPress("Escape")) {
-        history.push("/menu");
+        history.push("/thank-you");
     }
     const [leaderboard, setLeaderboard] = useState([]);
 
