@@ -30,7 +30,7 @@ const Login = () => {
                     // console.log(res.data);
                     const { username_exists } = res.data;
                     if (username_exists) {
-                        history.push("/menu");
+                        history.push("/thank-you");
                     }
                     return history.push("/first-login");
                 })
@@ -69,7 +69,7 @@ const Login = () => {
                     return history.push("/first-login");
                 }
                 localStorage.setItem("firstStory", "true");
-                return history.push("/menu");
+                return history.push("/thank-you");
             })
             .catch((e) => {
                 console.error("Auth backend error", e);
@@ -100,7 +100,7 @@ const Login = () => {
                     return history.push("/first-login");
                 }
                 localStorage.setItem("firstStory", "true");
-                return history.push("/menu");
+                return history.push("/thank-you");
             })
             .catch((e) => {
                 console.error("google Auth own backend error", e);
