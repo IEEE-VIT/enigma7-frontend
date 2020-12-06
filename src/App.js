@@ -87,7 +87,7 @@ const App = () => {
                 <ProtectedRoute
                     redirect="/"
                     exact
-                    path="/thank-you"
+                    path="/"
                     component={ThankYouPage}
                 />
                 {/* <Route exact path="/download" component={DownloadApp} /> */}
