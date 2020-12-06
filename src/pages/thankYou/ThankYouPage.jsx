@@ -25,6 +25,7 @@ const ThankYouPage = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    overflowY: "scroll",
                 }}
             >
                 <img className="character" src={character} alt="" />
@@ -40,7 +41,7 @@ const ThankYouPage = () => {
                     4747: ENIGMA has come to an end. Thank you for your sincere
                     efforts to get me out. Prizes on your way.
                 </Typography.Title>
-                <Button className="login-btn google-btn cursor">
+                <Button className="login-btn cursor">
                     <a
                         target="_blank"
                         rel="noopener noreferrer"
@@ -54,7 +55,7 @@ const ThankYouPage = () => {
                     onClick={() => {
                         history.push("/leaderboard");
                     }}
-                    className="cursor login-btn google-btn"
+                    className="cursor login-btn"
                 >
                     <div className="cursor">Check leaderboard</div>
                 </Button>
@@ -63,6 +64,7 @@ const ThankYouPage = () => {
                     style={{
                         color: "#26DF21",
                         textAlign: "center",
+                        marginTop: "3rem",
                     }}
                     onClick={onLogout}
                     className="cursor"
