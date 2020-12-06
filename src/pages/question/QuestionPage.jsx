@@ -98,7 +98,7 @@ const Question = () => {
         getXP();
 
         // get question
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/web/question/`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/web/question/`, {
             headers: {
                 Authorization: key,
             },
@@ -126,7 +126,7 @@ const Question = () => {
             });
 
         // xptime
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/xp-time/`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/web/xp-time/`, {
             headers: {
                 Authorization: key,
             },
@@ -333,7 +333,7 @@ const Question = () => {
     const onHintClick = () => {
         setButtonModal(false);
         // console.log("used hint");
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/web/hint`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/web/hint`, {
             headers: {
                 Authorization: key,
             },
