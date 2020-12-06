@@ -1,5 +1,6 @@
 .timer-page-full {
     flex-direction: column;
+    height: 100vh;
 }
 
 .character {
