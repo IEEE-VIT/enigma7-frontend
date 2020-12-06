@@ -45,7 +45,7 @@ const ThankYouPage = () => {
                     <a
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="http://www.stackoverflow.com/"
+                        href="https://forms.gle/pQjiUq8MinXzbFjB6"
                         className="cursor"
                     >
                         Feedback
