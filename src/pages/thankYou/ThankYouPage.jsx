@@ -5,6 +5,8 @@ import LoginNav from "../../components/loginNav/LoginNav";
 import useKeyPress from "../../hooks/useKeyPress";
 import character from "../../images/character.gif";
 
+import "./ThankYouPage.css";
+
 const ThankYouPage = () => {
     const onLogout = () => {
         localStorage.clear();
