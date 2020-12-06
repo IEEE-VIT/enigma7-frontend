@@ -126,7 +126,7 @@ const Question = () => {
             });
 
         // xptime
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/web/xp-time/`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/xp-time/`, {
             headers: {
                 Authorization: key,
             },
@@ -164,7 +164,7 @@ const Question = () => {
     const onAnswer = () => {
         // console.log("Answer:", answer);
         Axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/web/answer/`,
+            `${process.env.REACT_APP_BACKEND_URL}/game/web/answer/`,
             {
                 answer,
             },
