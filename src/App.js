@@ -3,8 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 // import LeaderBoardPage from "./pages/leaderboard/LeaderBoardPage";
 // import TimerPage from "./pages/timer/TimerPage";
-// import LoginPage from "./pages/login/LoginPage";
-import LoginPagePost from "./pages/login/LoginPagePost";
+import LoginPage from "./pages/login/LoginPage";
+// import LoginPagePost from "./pages/login/LoginPagePost";
 
 // import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
 import NotFound from "./pages/notFound/NotFound";
@@ -95,7 +95,7 @@ const App = () => {
                 {/* <Route exact path="/download" component={DownloadApp} /> */}
                 <Route exact path="/partners" component={Partners} />
                 <Route path="/apple-app-site-association" onEnter={reload} />
-                <Route exact path="/" component={LoginPagePost} />
+                <Route exact path="/" component={LoginPage} />
                 {/* <Route path="/privacy" exact component={Privacy} /> */}
                 <Route component={NotFound} />
             </Switch>
