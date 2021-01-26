@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from "react";
-import { Typography, Button } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { Typography } from "antd";
+import { Link } from "react-router-dom";
 // import { GoogleLogin } from "react-google-login";
 // import Axios from "axios";
 // import AppleSignin from "react-apple-signin-auth";
@@ -12,7 +12,7 @@ import Privacy from "../../images/Privacy.pdf";
 import "./login.css";
 
 const Login = () => {
-    const history = useHistory();
+    // const history = useHistory();
 
     // const [googleLoading, setGoogleLoading] = useState(false);
     // const [appleLoading, setAppleLoading] = useState(false);
@@ -210,16 +210,12 @@ const Login = () => {
                             </Button>
                         )}
                     /> */}
-                    <Button
-                        className="login-btn google-btn cursor"
-                        type="primary"
-                        onClick={() => {
-                            history.push("/menu");
-                            localStorage.setItem("key", `token dummyKey`);
-                        }}
+                    <div
+                        style={{ fontSize: "20px" }}
+                        className="google-btn cursor"
                     >
-                        Continue
-                    </Button>
+                        Thank You For Playing ENIGMA 7.0
+                    </div>
 
                     <Link to="/partners" className="cursor">
                         <u>Sponsors and Partners</u>
