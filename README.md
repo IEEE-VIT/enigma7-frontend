@@ -1,6 +1,7 @@
 <p align="center"><img src="https://github.com/IEEE-VIT/enigma7-frontend/blob/master/src/images/enigma.svg"/></p>
 
 <br/>
+
 ## About
 
 Enigma 7.0 is an online cryptic hunt organized by the IEEE-VIT Student Chapter. This initiative is completetly developed and led by students, and is played by thousands of competitors from all over the world. This being the 7th edition of Enigma, we remain undeafeated as no one has ever been able to complete our challenge!
