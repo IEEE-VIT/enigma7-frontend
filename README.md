@@ -1,3 +1,6 @@
+<p align="center"><img src="https://github.com/IEEE-VIT/enigma7-frontend/blob/master/src/images/enigma.svg"/></p>
+
+<br/>
 ## About
 
 Enigma 7.0 is an online cryptic hunt organized by the IEEE-VIT Student Chapter. This initiative is completetly developed and led by students, and is played by thousands of competitors from all over the world. This being the 7th edition of Enigma, we remain undeafeated as no one has ever been able to complete our challenge!
@@ -27,6 +30,16 @@ To get started:
 -   `git commit -m "A short description about the feature."`
 -   `git push origin my-amazing-feature`
 -   Open a pull request :)
+
+*   For running this project successfully you'll need to create a `.env` file and store your firebase credentials there like following
+
+```
+REACT_APP_BACKEND_URL=
+REACT_APP_GOOGLE_REDIRECT_URL=http://127.0.0.1:3000
+REACT_APP_GOOGLE_CLIENT_ID=<Your Google OAuth Client ID>
+REACT_APP_APPLE_CLIENT_ID=<Your Apple OAuth Client ID>
+REACT_APP_APPLE_REDIRECT_URL=http://127.0.0.1:3000
+```
 
 To start contributing, check out [`CONTRIBUTING.md`](https://github.com/IEEE-VIT/enigma7-frontend/tree/master/CONTRIBUTING.md) . New contributors are always welcome to support this project.
 
