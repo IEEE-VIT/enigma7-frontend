@@ -1,13 +1,13 @@
 import { Button, Typography } from "antd";
 import React from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import LoginNav from "../../components/loginNav/LoginNav";
 import useKeyPress from "../../hooks/useKeyPress";
 import character from "../../images/character.gif";
 
-const ThankYouPage = () => {
-    const history = useHistory();
+import "./ThankYouPage.css";
 
+const ThankYouPage = () => {
     const onLogout = () => {
         localStorage.clear();
         window.location.reload();
@@ -51,26 +51,6 @@ const ThankYouPage = () => {
                         Feedback
                     </a>
                 </Button>
-                <Button
-                    onClick={() => {
-                        history.push("/leaderboard");
-                    }}
-                    className="cursor login-btn"
-                >
-                    <div className="cursor">Check leaderboard</div>
-                </Button>
-                <Typography.Title
-                    level={5}
-                    style={{
-                        color: "#26DF21",
-                        textAlign: "center",
-                        marginTop: "3rem",
-                    }}
-                    onClick={onLogout}
-                    className="cursor"
-                >
-                    Press &apos;L&apos; to logout
-                </Typography.Title>
             </div>
         </div>
     );

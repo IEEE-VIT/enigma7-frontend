@@ -1,0 +1,49 @@
+.timer-page-full {
+    flex-direction: column;
+    height: 100vh;
+}
+
+.character {
+    height: 400px;
+    margin: 0;
+    width: auto;
+}
+
+.login-btn {
+    margin: 1rem;
+    width: 250px;
+    height: 46px;
+    background: #080e08;
+    border: 2px solid rgba(38, 223, 33, 0.2);
+    font-family: Inconsolata;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 21px;
+    color: #26df21;
+    cursor: url("../../images/cursor.svg"), auto;
+}
+
+.login-btn:hover {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
+.login-btn:focus {
+    background: rgba(24, 47, 36, 0.6);
+    border: 2px solid rgba(38, 223, 33, 0.72);
+    box-sizing: border-box;
+    box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
+        inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
+@media only screen and (max-width: 600px) {
+    .character {
+        height: auto;
+        margin: 0;
+        width: 300px;
+    }
+}
