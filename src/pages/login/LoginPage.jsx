@@ -1,21 +1,21 @@
 /* eslint-disable camelcase */
-import React, { useRef, useState } from "react";
-import { Typography, Button, notification } from "antd";
-import { Link } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
+import React from "react";
+import { Typography, Button } from "antd";
+import { Link, useHistory } from "react-router-dom";
+// import { GoogleLogin } from "react-google-login";
 // import Axios from "axios";
-import AppleSignin from "react-apple-signin-auth";
-import useKeyPress from "../../hooks/useKeyPress";
+// import AppleSignin from "react-apple-signin-auth";
+// import useKeyPress from "../../hooks/useKeyPress";
 import LoginNav from "../../components/loginNav/LoginNav";
 import Privacy from "../../images/Privacy.pdf";
 
 import "./login.css";
 
 const Login = () => {
-    // const history = useHistory();
+    const history = useHistory();
 
-    const [googleLoading, setGoogleLoading] = useState(false);
-    const [appleLoading, setAppleLoading] = useState(false);
+    // const [googleLoading, setGoogleLoading] = useState(false);
+    // const [appleLoading, setAppleLoading] = useState(false);
 
     // useEffect(() => {
     //     const key = localStorage.getItem("key");
@@ -50,73 +50,73 @@ const Login = () => {
     //     // eslint-disable-next-line
     // }, []);
 
-    const onSignUpWithGoogle = () => {
-        setGoogleLoading(true);
-        // Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/google/`, {
-        //     access_token: response.accessToken,
-        // })
-        //     .then((res) => {
-        //         const { data } = res;
-        //         // console.log(res.data);
+    // const onSignUpWithGoogle = () => {
+    //     setGoogleLoading(true);
+    // Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/google/`, {
+    //     access_token: response.accessToken,
+    // })
+    //     .then((res) => {
+    //         const { data } = res;
+    //         // console.log(res.data);
 
-        //         return data;
-        //     })
-        //     .then((data) => {
-        //         const { key, username_exists } = data;
-        //         localStorage.setItem("key", `token ${key}`);
-        //         setGoogleLoading(false);
-        //         if (!username_exists) {
-        //             return history.push("/first-login");
-        //         }
-        //         localStorage.setItem("firstStory", "true");
-        //         return history.push("/thank-you");
-        //     })
-        //     .catch((e) => {
-        //         console.error("Auth backend error", e);
-        //         notification.error({
-        //             message: "Sorry!",
-        //             description: "Something Went Wrong, Please try again",
-        //             style: {
-        //                 background: "#26df21",
-        //             },
-        //             duration: 0,
-        //         });
-        //     });
-    };
+    //         return data;
+    //     })
+    //     .then((data) => {
+    //         const { key, username_exists } = data;
+    //         localStorage.setItem("key", `token ${key}`);
+    //         setGoogleLoading(false);
+    //         if (!username_exists) {
+    //             return history.push("/first-login");
+    //         }
+    //         localStorage.setItem("firstStory", "true");
+    //         return history.push("/thank-you");
+    //     })
+    //     .catch((e) => {
+    //         console.error("Auth backend error", e);
+    //         notification.error({
+    //             message: "Sorry!",
+    //             description: "Something Went Wrong, Please try again",
+    //             style: {
+    //                 background: "#26df21",
+    //             },
+    //             duration: 0,
+    //         });
+    //     });
+    // };
 
-    const onSignUpWithApple = () => {
-        setAppleLoading(true);
+    // const onSignUpWithApple = () => {
+    //     setAppleLoading(true);
 
-        // Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/apple/`, {
-        //     code: response.authorization.code,
-        //     access_token: response.authorization.id_token,
-        // })
-        //     .then((res) => {
-        //         // eslint-disable-next-line no-unused-vars
-        //         const { key, username_exists } = res.data;
-        //         localStorage.setItem("key", `token ${key}`);
-        //         setAppleLoading(false);
-        //         if (!username_exists) {
-        //             return history.push("/first-login");
-        //         }
-        //         localStorage.setItem("firstStory", "true");
-        //         return history.push("/thank-you");
-        //     })
-        //     .catch((e) => {
-        //         console.error("google Auth own backend error", e);
-        //     });
-    };
+    // Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/apple/`, {
+    //     code: response.authorization.code,
+    //     access_token: response.authorization.id_token,
+    // })
+    //     .then((res) => {
+    //         // eslint-disable-next-line no-unused-vars
+    //         const { key, username_exists } = res.data;
+    //         localStorage.setItem("key", `token ${key}`);
+    //         setAppleLoading(false);
+    //         if (!username_exists) {
+    //             return history.push("/first-login");
+    //         }
+    //         localStorage.setItem("firstStory", "true");
+    //         return history.push("/thank-you");
+    //     })
+    //     .catch((e) => {
+    //         console.error("google Auth own backend error", e);
+    //     });
+    // };
 
-    const googleBtn = useRef(null);
-    const appleBtn = useRef(null);
+    // const googleBtn = useRef(null);
+    // const appleBtn = useRef(null);
 
-    if (useKeyPress("ArrowDown")) {
-        appleBtn.current.focus();
-    }
+    // if (useKeyPress("ArrowDown")) {
+    //     appleBtn.current.focus();
+    // }
 
-    if (useKeyPress("ArrowUp")) {
-        googleBtn.current.focus();
-    }
+    // if (useKeyPress("ArrowUp")) {
+    //     googleBtn.current.focus();
+    // }
 
     return (
         <div className="login-page page">
@@ -151,7 +151,7 @@ const Login = () => {
             </div>
             <div className="login-bottom">
                 <div className="login-btn-group">
-                    <GoogleLogin
+                    {/* <GoogleLogin
                         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         onSuccess={onSignUpWithGoogle}
                         onFailure={() => {
@@ -209,7 +209,17 @@ const Login = () => {
                                 Continue with Apple
                             </Button>
                         )}
-                    />
+                    /> */}
+                    <Button
+                        className="login-btn google-btn cursor"
+                        type="primary"
+                        onClick={() => {
+                            history.push("/menu");
+                            localStorage.setItem("key", `token dummyKey`);
+                        }}
+                    >
+                        Continue
+                    </Button>
 
                     <Link to="/partners" className="cursor">
                         <u>Sponsors and Partners</u>
