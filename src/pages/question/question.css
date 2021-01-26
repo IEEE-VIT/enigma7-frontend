@@ -1,11 +1,13 @@
 .question-body {
-    max-width: min-content;
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-content: space-evenly;
     overflow-y: scroll;
     scrollbar-width: thin;
+    overflow-x: hidden;
+    padding: 0 1rem;
+    max-width: 50%;
 }
 
 .question-body::-webkit-scrollbar {
@@ -17,14 +19,16 @@
     flex-direction: row;
     justify-content: space-around;
     margin: 1rem 0;
+    width: 100%;
 }
 
-.ant-progress-outer {
+/* .ant-progress-outer {
     padding: 0 !important;
     margin: 0 !important;
-}
+} */
 .ant-progress-text {
-    display: none;
+    /* display: none; */
+    color: #fff;
 }
 
 .question-powerup-box {
@@ -33,6 +37,9 @@
     border: 1px solid rgba(38, 223, 33, 0.2);
     box-sizing: border-box;
     margin: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .question-powerup-box:hover {
@@ -41,6 +48,29 @@
     box-sizing: border-box;
     box-shadow: inset -4px -4px 6px rgba(38, 223, 33, 0.08),
         inset 4px 4px 5px rgba(38, 223, 33, 0.08);
+}
+
+.question-powerup-img {
+    height: 40px;
+    width: 40px;
+    margin: 0;
+}
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image {
+    height: 32px;
+    width: 32px;
+    margin: 0 0.5em;
+}
+
+.modal-text {
+    margin-bottom: 0em;
+    margin: 0 0.5em;
 }
 
 .question-main {
@@ -60,9 +90,9 @@
 }
 
 .question-box {
-    width: 20rem;
+    width: auto;
     height: 10rem;
-    border: 2px solid #1db818;
+    /* border: 2px solid #1db818; */
     box-sizing: border-box;
     margin: 2rem 0;
 }
@@ -83,7 +113,7 @@
 }
 
 .question-btn {
-    margin: 1rem 0;
+    margin: 1rem 1rem;
     background: 0%;
     color: #26df21;
     border: 1px solid #1db818;
@@ -170,6 +200,10 @@
     .question-form {
         width: max-content;
     }
+    .question-powerup-img {
+        height: 20px;
+        width: 20px;
+    }
 }
 
 @media only screen and (max-height: 730px) {
@@ -185,9 +219,8 @@
     }
 
     .question-box {
-        width: 280px;
+        width: auto;
         height: 10rem;
-        border: 2px solid #1db818;
         box-sizing: border-box;
         margin: 2rem 0;
     }

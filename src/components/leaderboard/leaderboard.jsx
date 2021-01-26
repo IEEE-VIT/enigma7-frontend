@@ -7,9 +7,9 @@ const LeaderBoard = ({ leaders }) => {
     const i = 1;
 
     return (
-        <Layout className="page leader">
+        <Layout className="page">
             <NavBar />
-            <div className="flex-container">
+            <div className="flex-container leader">
                 <div className="leaderboard-container">
                     <h1>Leaderboard</h1>
                     <table>
@@ -25,7 +25,9 @@ const LeaderBoard = ({ leaders }) => {
                             {leaders.map((leader) => {
                                 return (
                                     <tr key={i} className="leaderboard-row">
-                                        <td className="col">{i}.</td>
+                                        <td className="col">
+                                            {leaders.indexOf(leader) + 1}.
+                                        </td>
                                         <td className="username col">
                                             {leader.username}
                                         </td>

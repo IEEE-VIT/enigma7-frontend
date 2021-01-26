@@ -27,6 +27,10 @@
 
 .first-login-content {
     margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .first-login-question {
@@ -36,7 +40,6 @@
     font-weight: normal;
     font-size: 20px;
     line-height: 26px;
-
     color: #1db818;
 }
 
@@ -51,6 +54,10 @@
     font-size: 21px;
     line-height: 27px;
     margin: 2rem 0;
+    background-color: #182f24;
+    color: #1db818;
+    border: none !important;
+    outline: none !important;
 }
 
 .first-login-input:focus {
@@ -64,4 +71,32 @@
     font-weight: normal;
     font-size: 20px;
     line-height: 26px;
+    display: flex;
+}
+
+.first-login-year {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: #182f24;
+    color: #1db818;
+    border: none !important;
+    outline: none !important;
+}
+
+.ant-radio-button-wrapper {
+    background-color: #182f24;
+    color: #1db818;
+    border: none !important;
+    outline: none !important;
+}
+
+@media only screen and (max-width: 670px) {
+    .first-login-footer {
+        display: none;
+    }
 }

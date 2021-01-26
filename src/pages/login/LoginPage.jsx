@@ -1,66 +1,146 @@
 /* eslint-disable camelcase */
-import React, { useRef } from "react";
+import React from "react";
+import { Typography } from "antd";
+import { Link } from "react-router-dom";
+// import { GoogleLogin } from "react-google-login";
+// import Axios from "axios";
+// import AppleSignin from "react-apple-signin-auth";
+// import useKeyPress from "../../hooks/useKeyPress";
+import LoginNav from "../../components/loginNav/LoginNav";
+import Privacy from "../../images/Privacy.pdf";
+
 import "./login.css";
-import { Typography, Button } from "antd";
-import { useHistory } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
-import Axios from "axios";
-import useKeyPress from "../../hooks/useKeyPress";
 
 const Login = () => {
-    const history = useHistory();
-    const onSignUpWithGoogle = (response) => {
+    // const history = useHistory();
 
-        console.log("client id:>>", process.env.REACT_APP_CLIENT_ID);
-        console.log(response);
-        console.log(response.code);
-        console.log("backendurl:>>", process.env.REACT_APP_BACKEND_URL);
-
-        Axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/users/auth/google`,
-            {
-                code: response.code,
-                callback_url: "http://127.0.0.1:3000/",
-            },
-            {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                },
-            }
-        )
-            .then((res) => {
-                // eslint-disable-next-line no-unused-vars
-                const { key, username_exists } = res;
-                console.log(res);
-                if (username_exists) {
-                    return history.push("/firstLogin");
-                }
-                return history.push("/menu");
-            })
-            .catch((e) => {
-                console.error("google Auth own backend error", e);
-            });
-    };
-    const googleBtn = useRef(null);
-    const appleBtn = useRef(null);
+    // const [googleLoading, setGoogleLoading] = useState(false);
+    // const [appleLoading, setAppleLoading] = useState(false);
 
     // useEffect(() => {
-    //     googleBtn.current.focus();
+    //     const key = localStorage.getItem("key");
+
+    //     if (key) {
+    //         Axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/exists/`, {
+    //             headers: {
+    //                 Authorization: key,
+    //             },
+    //         })
+    //             .then((res) => {
+    //                 // console.log(res.data);
+    //                 const { username_exists } = res.data;
+    //                 if (username_exists) {
+    //                     history.push("/thank-you");
+    //                 }
+    //                 return history.push("/first-login");
+    //             })
+    //             .catch((err) => {
+    //                 console.error("error getting username", err);
+    //                 notification.error({
+    //                     message: "Sorry!",
+    //                     description: "Something Went Wrong, Please try again",
+    //                     style: {
+    //                         background: "#26df21",
+    //                     },
+    //                     duration: 0,
+    //                 });
+    //             });
+    //     }
+
+    //     // eslint-disable-next-line
     // }, []);
 
-    if (useKeyPress("ArrowDown")) {
-        appleBtn.current.focus();
-    }
+    // const onSignUpWithGoogle = () => {
+    //     setGoogleLoading(true);
+    // Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/google/`, {
+    //     access_token: response.accessToken,
+    // })
+    //     .then((res) => {
+    //         const { data } = res;
+    //         // console.log(res.data);
 
-    if (useKeyPress("ArrowUp")) {
-        googleBtn.current.focus();
-    }
+    //         return data;
+    //     })
+    //     .then((data) => {
+    //         const { key, username_exists } = data;
+    //         localStorage.setItem("key", `token ${key}`);
+    //         setGoogleLoading(false);
+    //         if (!username_exists) {
+    //             return history.push("/first-login");
+    //         }
+    //         localStorage.setItem("firstStory", "true");
+    //         return history.push("/thank-you");
+    //     })
+    //     .catch((e) => {
+    //         console.error("Auth backend error", e);
+    //         notification.error({
+    //             message: "Sorry!",
+    //             description: "Something Went Wrong, Please try again",
+    //             style: {
+    //                 background: "#26df21",
+    //             },
+    //             duration: 0,
+    //         });
+    //     });
+    // };
+
+    // const onSignUpWithApple = () => {
+    //     setAppleLoading(true);
+
+    // Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/apple/`, {
+    //     code: response.authorization.code,
+    //     access_token: response.authorization.id_token,
+    // })
+    //     .then((res) => {
+    //         // eslint-disable-next-line no-unused-vars
+    //         const { key, username_exists } = res.data;
+    //         localStorage.setItem("key", `token ${key}`);
+    //         setAppleLoading(false);
+    //         if (!username_exists) {
+    //             return history.push("/first-login");
+    //         }
+    //         localStorage.setItem("firstStory", "true");
+    //         return history.push("/thank-you");
+    //     })
+    //     .catch((e) => {
+    //         console.error("google Auth own backend error", e);
+    //     });
+    // };
+
+    // const googleBtn = useRef(null);
+    // const appleBtn = useRef(null);
+
+    // if (useKeyPress("ArrowDown")) {
+    //     appleBtn.current.focus();
+    // }
+
+    // if (useKeyPress("ArrowUp")) {
+    //     googleBtn.current.focus();
+    // }
 
     return (
         <div className="login-page page">
             <div className="login-header">
+                <LoginNav />
                 <div className="login-header-background">
-                    100101001010100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100110010010101101010100101001100100101011010101001010011001001010110101010010100
+                    01000001 01110000 01110000 01110010 01100101 01100011
+                    01101001 01100001 01110100 01100101 00100000 01111001
+                    01101111 01110101 01110010 00100000 01100011 01110101
+                    01110010 01101001 01101111 01110011 01101001 01110100
+                    01111001 00101110 00100000 01001110 01101111 01110100
+                    00100000 01100001 01101100 01101100 00100000 01110000
+                    01101100 01100001 01100011 01100101 01110011 00100000
+                    01110111 01101001 01101100 01101100 00100000 01100111
+                    01110101 01101001 01100100 01100101 00100000 01111001
+                    01101111 01110101 00100000 01110100 01101111 00100000
+                    01110100 01101000 01100101 00100000 01100101 01101110
+                    01100100 00100000 01100010 01110101 01110100 00100000
+                    01110011 01101111 01101101 01100101 00100000 01100100
+                    01101111 00101110 00100000 01000001 01101100 01110111
+                    01100001 01111001 01110011 00100000 01101100 01101111
+                    01101111 01101011 00100000 01101111 01110101 01110100
+                    00100000 01100110 01101111 01110010 00100000 01100011
+                    01101100 01110101 01100101 01110011
                 </div>
                 <div className="login-heading">
                     <Typography className="login-title">ENIGMA</Typography>
@@ -71,37 +151,83 @@ const Login = () => {
             </div>
             <div className="login-bottom">
                 <div className="login-btn-group">
-                    <GoogleLogin
-                        clientId={process.env.REACT_APP_CLIENT_ID}
+                    {/* <GoogleLogin
+                        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         onSuccess={onSignUpWithGoogle}
-                        onFailure={() => console.log("faliure")}
+                        onFailure={() => {
+                            console.error("Are you offline?");
+                            notification.error({
+                                message: "Sorry!",
+                                description:
+                                    "Something Went Wrong, Please try again",
+                                style: {
+                                    background: "#26df21",
+                                },
+                                duration: 0,
+                            });
+                        }}
                         cookiePolicy="single_host_origin"
-                        responseType="code"
+                        // responseType="code"
+                        redirectUri={process.env.REACT_APP_GOOGLE_REDIRECT_URL}
                         render={(renderProps) => (
                             <Button
                                 onClick={renderProps.onClick}
-                                disabled={renderProps.disabled}
-                                className="login-btn"
+                                // disabled={renderProps.disabled}
+                                className="login-btn google-btn cursor"
                                 type="primary"
                                 ref={googleBtn}
-                                autofocus
+                                autoFocus
+                                loading={googleLoading}
                             >
-                                Sign up with Google
+                                Continue with Google
                             </Button>
                         )}
                     />
 
-                    <Button
-                        onClick={() => "apple login"}
-                        className="login-btn"
-                        type="primary"
-                        ref={appleBtn}
+                    <AppleSignin
+                        authOptions={{
+                            clientId: process.env.REACT_APP_APPLE_CLIENT_ID,
+                            scope: "email name",
+                            redirectURI:
+                                process.env.REACT_APP_APPLE_REDIRECT_URL,
+                            nonce: "nonce",
+                            usePopup: true,
+                        }} // REQUIRED
+                        // uiType="dark"
+                        onSuccess={onSignUpWithApple} // default = undefined
+                        onError={(error) => console.error(error)} // default = undefined
+                        // skipScript={false} // default = undefined
+                        // iconProp={{ style: { marginTop: "10px" } }} // default = undefined
+                        render={(props) => (
+                            <Button
+                                onClick={props.onClick}
+                                className="login-btn google-btn cursor"
+                                type="primary"
+                                ref={appleBtn}
+                                loading={appleLoading}
+                            >
+                                Continue with Apple
+                            </Button>
+                        )}
+                    /> */}
+                    <div
+                        style={{ fontSize: "20px" }}
+                        className="google-btn cursor"
                     >
-                        Sign up with Apple
-                    </Button>
-                </div>
-                <div className="login-footer">
-                    Use ARROW to navigate | Press ENTER to continue
+                        Thank You For Playing ENIGMA 7.0
+                    </div>
+
+                    <Link to="/partners" className="cursor">
+                        <u>Sponsors and Partners</u>
+                    </Link>
+                    <a
+                        className="cursor"
+                        href={Privacy}
+                        target="__blank"
+                        rel="noopener noreferrer"
+                    >
+                        <u>Privacy</u>
+                    </a>
                 </div>
             </div>
         </div>

@@ -1,20 +1,34 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
-import ProfilePage from "./pages/profile/profilePage";
-import StoryPage from "./pages/story/storyPage";
-import MainPage from "./pages/main/main";
 import LeaderBoardPage from "./pages/leaderboard/LeaderBoardPage";
 import TimerPage from "./pages/timer/TimerPage";
-import QuestionPage from "./pages/question/QuestionPage";
 import LoginPage from "./pages/login/LoginPage";
+// import LoginPagePost from "./pages/login/LoginPagePost";
+
 import FirstLoginPage from "./pages/firstLogin/FirstLoginPage";
+import NotFound from "./pages/notFound/NotFound";
+// import Privacy from "./pages/privacy/Privacy";
+import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
+import Partners from "./pages/partners/Partners";
+// import ThankYouPage from "./pages/thankYou/ThankYouPage";
+
+import ProfilePage from "./pages/profile/profilePage";
+import MainPage from "./pages/main/main";
+import StoryPage from "./pages/story/StoryPage";
+import NewStoryPage from "./pages/story/NewStoryPage";
+import QuestionPage from "./pages/question/QuestionPage";
+import InfoPage from "./pages/infoPage/InfoPage";
+import DownloadApp from "./pages/downloadApp/DownloadApp";
+
+import "./pages/timer/timer.css";
+import "./pages/profile/profile.css";
+import "./pages/question/question.css";
+import "./pages/story/story.css";
+import "./pages/main/main.css";
 
 const App = () => {
-    localStorage.setItem(
-        "key",
-        "Token 30fba45c588ed7904a70da44cce083c54968ec5f"
-    );
+    const reload = () => window.location.reload();
     return (
         <Layout
             style={{
@@ -25,32 +39,73 @@ const App = () => {
             }}
         >
             <Switch>
-                <Route exact path="/profile">
-                    <ProfilePage />
-                </Route>
-                <Route exact path="/story">
-                    <StoryPage />
-                </Route>
-                <Route exact path="/menu">
-                    <MainPage />
-                </Route>
-                <Route exact path="/leaderboard">
-                    <LeaderBoardPage />
-                </Route>
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/profile"
+                    component={ProfilePage}
+                />
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/story"
+                    component={StoryPage}
+                />
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/menu"
+                    component={MainPage}
+                />
 
-                <Route exact path="/Questions">
-                    <QuestionPage />
-                </Route>
-                <Route exact path="/startNow">
-                    <TimerPage />
-                </Route>
-
-                <Route exact path="/firstLogin">
-                    <FirstLoginPage />
-                </Route>
-                <Route exact path="/">
-                    <LoginPage />
-                </Route>
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/Questions"
+                    component={QuestionPage}
+                />
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/new-story"
+                    component={NewStoryPage}
+                />
+                <ProtectedRoute
+                    exact
+                    path="/start-now"
+                    component={TimerPage}
+                    redirect="/"
+                />
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/instructions"
+                    component={InfoPage}
+                />
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/leaderboard"
+                    component={LeaderBoardPage}
+                />
+                <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/first-login"
+                    component={FirstLoginPage}
+                />
+                {/* <ProtectedRoute
+                    redirect="/"
+                    exact
+                    path="/"
+                    component={ThankYouPage}
+                /> */}
+                <Route exact path="/download" component={DownloadApp} />
+                <Route exact path="/partners" component={Partners} />
+                <Route path="/apple-app-site-association" onEnter={reload} />
+                <Route exact path="/" component={LoginPage} />
+                {/* <Route path="/privacy" exact component={Privacy} /> */}
+                <Route component={NotFound} />
             </Switch>
         </Layout>
     );

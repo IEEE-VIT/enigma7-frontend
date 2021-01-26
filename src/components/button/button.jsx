@@ -12,7 +12,7 @@ const Buttons = ({ redirect, name }) => {
     };
     return (
         <div onClick={route}>
-            <div className="button-container">{name}</div>
+            <div className="button-container cursor">{name}</div>
             <br />
         </div>
     );

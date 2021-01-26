@@ -54,7 +54,7 @@ thead {
 }
 
 .leader {
-    height: 100%;
+    overflow-y: scroll;
 }
 
 @media screen and (max-width: 400px) {

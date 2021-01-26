@@ -5,14 +5,26 @@
     align-items: center;
     padding: 0 1rem;
     text-align: center;
+    height: 80vh;
     /* align-self: center;
     justify-self: center; */
 }
 
+.timer-page-full {
+    flex-direction: column;
+}
+
 .timer-heading {
     font-size: 27px;
-    line-height: 35px;
+    line-height: 45px;
 }
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .ant-statistic {
     display: flex;
     flex-direction: column;
@@ -49,9 +61,14 @@
 }
 
 @media only screen and (max-width: 670px) {
-    .timer-page {
+    /* .timer-page {
         height: 90vh;
         width: 90vw;
         margin: 1.7rem;
+    } */
+
+    .timer-heading {
+        font-size: 20px;
+        line-height: 35px;
     }
 }
