@@ -98,7 +98,7 @@ const Question = () => {
         getXP();
 
         // get question
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/web/question/`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/question/`, {
             headers: {
                 Authorization: key,
             },

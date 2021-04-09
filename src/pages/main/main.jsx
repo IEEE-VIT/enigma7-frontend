@@ -5,7 +5,7 @@ import Buttons from "../../components/button/button";
 import "./main.css";
 import logo from "../../images/enigma.svg";
 import isMobile from "../../utils/checkMobile";
-import Footer from "../../components/Footer/Footer";
+// import Footer from "../../components/Footer/Footer";
 
 const MainPage = () => {
     const history = useHistory();
@@ -30,7 +30,7 @@ const MainPage = () => {
                     <Buttons redirect="profile" name="Profile" />
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </Layout>
     );
 };
