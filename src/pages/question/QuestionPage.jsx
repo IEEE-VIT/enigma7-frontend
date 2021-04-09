@@ -21,7 +21,7 @@ import closeAnswer from "../../images/closeAnswer.png";
 import correctAnswer from "../../images/correctAnswer.png";
 import LoadingPage from "../loadingPage/LoadingPage";
 import isMobile from "../../utils/checkMobile";
-import Footer from "../../components/Footer/Footer";
+// import Footer from "../../components/Footer/Footer";
 
 const { Content } = Layout;
 
@@ -563,7 +563,7 @@ const Question = () => {
                     </div>
                 </Modal>
             </Content>
-            <Footer />
+            {/* <Footer /> */}
         </Layout>
     );
 };
