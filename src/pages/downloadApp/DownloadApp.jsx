@@ -10,7 +10,12 @@ const DownloadApp = () => {
             <LoginNav />
             <div className="leader">
                 <img style={{ height: 250 }} src={logo} alt="enigma.svg" />
-                <p className="download-text">Download the App now!</p>
+                <p className="download-text">
+                    Head over to the website to play the Mock Enigma!
+                </p>
+                <p className="download-text">
+                    Here are the apps which were used for the event!
+                </p>
                 <div className="download-icons">
                     <a
                         href="https://play.google.com/store/apps/details?id=com.ieeevit.enigma7"

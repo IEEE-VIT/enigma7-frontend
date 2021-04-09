@@ -4,7 +4,7 @@ import { Typography, Button, notification } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
-import AppleSignin from "react-apple-signin-auth";
+// import AppleSignin from "react-apple-signin-auth";
 import useKeyPress from "../../hooks/useKeyPress";
 import LoginNav from "../../components/loginNav/LoginNav";
 import Privacy from "../../images/Privacy.pdf";
@@ -15,7 +15,7 @@ const Login = () => {
     const history = useHistory();
 
     const [googleLoading, setGoogleLoading] = useState(false);
-    const [appleLoading, setAppleLoading] = useState(false);
+    // const [appleLoading, setAppleLoading] = useState(false);
 
     useEffect(() => {
         const key = localStorage.getItem("key");
@@ -84,28 +84,28 @@ const Login = () => {
             });
     };
 
-    const onSignUpWithApple = (response) => {
-        setAppleLoading(true);
+    // const onSignUpWithApple = (response) => {
+    //     setAppleLoading(true);
 
-        Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/apple/`, {
-            code: response.authorization.code,
-            access_token: response.authorization.id_token,
-        })
-            .then((res) => {
-                // eslint-disable-next-line no-unused-vars
-                const { key, username_exists } = res.data;
-                localStorage.setItem("key", `token ${key}`);
-                setAppleLoading(false);
-                if (!username_exists) {
-                    return history.push("/first-login");
-                }
-                localStorage.setItem("firstStory", "true");
-                return history.push("/menu");
-            })
-            .catch((e) => {
-                console.error("google Auth own backend error", e);
-            });
-    };
+    //     Axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/auth/apple/`, {
+    //         code: response.authorization.code,
+    //         access_token: response.authorization.id_token,
+    //     })
+    //         .then((res) => {
+    //             // eslint-disable-next-line no-unused-vars
+    //             const { key, username_exists } = res.data;
+    //             localStorage.setItem("key", `token ${key}`);
+    //             setAppleLoading(false);
+    //             if (!username_exists) {
+    //                 return history.push("/first-login");
+    //             }
+    //             localStorage.setItem("firstStory", "true");
+    //             return history.push("/menu");
+    //         })
+    //         .catch((e) => {
+    //             console.error("google Auth own backend error", e);
+    //         });
+    // };
 
     const googleBtn = useRef(null);
     const appleBtn = useRef(null);
@@ -184,7 +184,7 @@ const Login = () => {
                         )}
                     />
 
-                    <AppleSignin
+                    {/* <AppleSignin
                         authOptions={{
                             clientId: process.env.REACT_APP_APPLE_CLIENT_ID,
                             scope: "email name",
@@ -209,7 +209,7 @@ const Login = () => {
                                 Continue with Apple
                             </Button>
                         )}
-                    />
+                    /> */}
 
                     <Link to="/partners" className="cursor">
                         <u>Sponsors and Partners</u>
