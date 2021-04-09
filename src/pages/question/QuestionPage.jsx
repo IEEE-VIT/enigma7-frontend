@@ -164,7 +164,7 @@ const Question = () => {
     const onAnswer = () => {
         // console.log("Answer:", answer);
         Axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/game/web/answer/`,
+            `${process.env.REACT_APP_BACKEND_URL}/game/answer/`,
             {
                 answer,
             },
@@ -333,7 +333,7 @@ const Question = () => {
     const onHintClick = () => {
         setButtonModal(false);
         // console.log("used hint");
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/web/hint`, {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/game/hint`, {
             headers: {
                 Authorization: key,
             },
